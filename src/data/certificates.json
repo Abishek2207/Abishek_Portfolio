@@ -1,0 +1,57 @@
+[
+  {
+    "id": "nasa-2025",
+    "uid": "NASA-2025-SPAPPS",
+    "title": "Galactic Problem Solver",
+    "issuer": "NASA International Space Apps Challenge",
+    "date": "Oct 2025",
+    "verificationUrl": "https://www.spaceappschallenge.org/",
+    "verified": true,
+    "category": "Deep Learning",
+    "imagePath": "/certificates/nasa_spaceapps_2025.png"
+  },
+  {
+    "id": "handloom-2025",
+    "uid": "HANDLOOM-2025",
+    "title": "Handloom Hackathon Participation",
+    "issuer": "Ministry of Textiles, Govt of India",
+    "date": "Aug 2025",
+    "verificationUrl": "https://handloomhackathon.org.in/",
+    "verified": true,
+    "category": "Generative AI",
+    "imagePath": "/certificates/handloom_hackathon_2025.png"
+  },
+  {
+    "id": "tata-genai",
+    "uid": "jGbPkQHf8nXMdWDfj",
+    "title": "GenAI Powered Data Analytics",
+    "issuer": "Tata Group / Forage",
+    "date": "Dec 2025",
+    "verificationUrl": "https://link.theforage.com/verify/jGbPkQHf8nXMdWDfj",
+    "verified": true,
+    "category": "AI",
+    "imagePath": "/certificates/tata_genai_analytics.png"
+  },
+  {
+    "id": "bcgx-genai",
+    "uid": "eyydHWx5yEQLtrAMg",
+    "title": "GenAI Job Simulation",
+    "issuer": "BCG X / Forage",
+    "date": "Dec 2025",
+    "verificationUrl": "https://link.theforage.com/verify/eyydHWx5yEQLtrAMg",
+    "verified": true,
+    "category": "Generative AI",
+    "imagePath": "/certificates/bcgx_genai_sim.png"
+  },
+  {
+    "id": "walmart-swe",
+    "uid": "jGbPkQHf8nXMdWDfj",
+    "title": "Advanced Software Engineering",
+    "issuer": "Walmart Global Tech / Forage",
+    "date": "Dec 2025",
+    "verificationUrl": "https://link.theforage.com/verify/jGbPkQHf8nXMdWDfj",
+    "verified": true,
+    "category": "Experience",
+    "imagePath": "/certificates/walmart_software_eng_sim.png"
+  }
+]

@@ -1,0 +1,78 @@
+export const projects = [
+  {
+    id: "tulasiai",
+    title: "TulasiAI",
+    subtitle: "AI Career Intelligence Platform",
+    description:
+      "An AI-powered career intelligence ecosystem for students and professionals. Features AI agents for resume analysis, interview preparation, opportunity discovery, and career guidance — all in one unified platform.",
+    longDescription:
+      "TulasiAI is built on a modern AI stack combining Large Language Models, Retrieval-Augmented Generation (RAG), and autonomous AI Agents. The platform provides personalized career roadmaps, AI-powered resume scoring, mock interview simulations, and real-time job matching.",
+    image: null,
+    tech: ["Next.js", "React", "FastAPI", "Python", "PostgreSQL", "LLMs", "RAG", "AI Agents"],
+    category: "Career AI",
+    status: "Active · Production",
+    statusColor: "#10b981",
+    accentColor: "#00d4ff",
+    glowColor: "rgba(0,212,255,0.15)",
+    icon: "\u{1F9E0}",
+    github: "https://github.com/Abishek2207",
+    features: ["Resume AI Analysis", "Mock Interviews", "Opportunity Discovery", "Career Guidance"],
+  },
+  {
+    id: "tulasihealth",
+    title: "TulasiHealth",
+    subtitle: "Unified Healthcare Intelligence Platform",
+    description:
+      "Healthcare interoperability platform bridging AYUSH/NAMASTE and ICD-11 standards. Enables seamless medical data exchange and intelligent health record management.",
+    longDescription:
+      "TulasiHealth uses NLP and Machine Learning to interpret and translate between traditional Indian healthcare taxonomies (AYUSH, NAMASTE) and the international ICD-11 standard, enabling better health data interoperability.",
+    image: null,
+    tech: ["FastAPI", "Python", "PostgreSQL", "NLP", "ML", "Healthcare AI"],
+    category: "Healthcare AI",
+    status: "In Development",
+    statusColor: "#7c3aed",
+    accentColor: "#7c3aed",
+    glowColor: "rgba(124,58,237,0.15)",
+    icon: "\u{1F3E5}",
+    github: "https://github.com/Abishek2207",
+    features: ["AYUSH-ICD11 Bridge", "NLP Parsing", "Health Data API", "AI Symptom Analysis"],
+  },
+  {
+    id: "weavetales",
+    title: "WeaveTales",
+    subtitle: "AI-Powered Handloom Commerce & Discovery",
+    description:
+      "A computer vision-based handloom discovery and virtual try-on platform that connects artisans with global buyers, preserving India's handloom heritage through AI.",
+    longDescription:
+      "WeaveTales uses Computer Vision for pattern recognition, fabric texture analysis, and virtual try-on technology to create an immersive handloom commerce experience. The platform supports artisan discovery, authentic product certification, and direct commerce.",
+    image: null,
+    tech: ["Computer Vision", "React", "FastAPI", "Python", "ML"],
+    category: "Computer Vision",
+    status: "In Development",
+    statusColor: "#10b981",
+    accentColor: "#e879f9",
+    glowColor: "rgba(232,121,249,0.15)",
+    icon: "\u{1F9F5}",
+    github: "https://github.com/Abishek2207",
+    features: ["Visual Search", "Virtual Try-On", "Artisan Storytelling", "Commerce Platform"],
+  },
+  {
+    id: "oceanguard",
+    title: "OceanGuard AI",
+    subtitle: "Marine Risk Detection Platform",
+    description:
+      "AI-powered maritime intelligence platform for possible dark-fishing risk detection. Monitors marine protected areas and analyzes vessel activity using satellite and SAR intelligence.",
+    longDescription:
+      "OceanGuard AI combines Geospatial AI, Computer Vision, and satellite data analysis to identify suspicious maritime patterns, track vessels in restricted areas, and generate risk intelligence reports for marine authorities with human-in-the-loop evidence cards.",
+    image: null,
+    tech: ["Computer Vision", "Geospatial AI", "FastAPI", "Python", "React"],
+    category: "Geospatial AI",
+    status: "Prototype",
+    statusColor: "#00d4ff",
+    accentColor: "#10b981",
+    glowColor: "rgba(16,185,129,0.15)",
+    icon: "\u{1F30A}",
+    github: "https://github.com/Abishek2207",
+    features: ["Marine Protected Area Monitoring", "Vessel Activity Analysis", "Satellite/SAR Intelligence", "Evidence Cards"],
+  },
+];

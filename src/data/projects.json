@@ -1,0 +1,48 @@
+[
+  {
+    "id": "tulasi",
+    "title": "Tulasi AI",
+    "tagline": "LLM-based Medical AI Assistant",
+    "description": "A comprehensive health tech AI assistant featuring a RAG pipeline and PDF QA system to help users query medical documentation effectively. Built with a highly scalable FastAPI backend and Next.js frontend.",
+    "techStack": [
+      "Next.js",
+      "FastAPI",
+      "RAG",
+      "LLMs",
+      "LangChain"
+    ],
+    "githubUrl": "https://github.com/abishekr/tulasi-ai",
+    "demoUrl": "https://tulasi-ai.vercel.app",
+    "status": "Ongoing",
+    "category": "AI/ML"
+  },
+  {
+    "id": "nasa",
+    "title": "NASA Space Apps Hackathon",
+    "tagline": "Exoplanet Detection System",
+    "description": "Developed an AI model for recognizing data patterns in stellar light curves to identify potential exoplanet transits. Used advanced deep learning techniques to process vast amounts of astronomical data.",
+    "techStack": [
+      "PyTorch",
+      "Pandas",
+      "Scikit-Learn",
+      "CNNs"
+    ],
+    "githubUrl": "https://github.com/abishekr/nasa-exoplanet",
+    "status": "Completed",
+    "category": "Deep Learning"
+  },
+  {
+    "id": "handloom",
+    "title": "Handloom AI Platform",
+    "tagline": "Digital Storytelling & Marketplace",
+    "description": "An AI platform aimed at reviving the handloom industry by providing digital storytelling for artisans and a smart AI-driven marketplace to connect them with global buyers.",
+    "techStack": [
+      "React",
+      "Python",
+      "Generative AI",
+      "Stable Diffusion"
+    ],
+    "status": "Hackathon Finalist",
+    "category": "Generative AI"
+  }
+]

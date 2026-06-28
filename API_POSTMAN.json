@@ -1,0 +1,468 @@
+{
+  "info": {
+    "name": "Abishek R Portfolio API",
+    "description": "Production-grade AI Engineer Portfolio Platform API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{BASE_URL}}/auth/login",
+              "host": ["BASE_URL"],
+              "path": ["auth", "login"]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "username",
+                  "value": "admin"
+                },
+                {
+                  "key": "password",
+                  "value": "admin123"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Current User",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/auth/me",
+              "host": ["BASE_URL"],
+              "path": ["auth", "me"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Projects",
+      "item": [
+        {
+          "name": "Get All Projects",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{BASE_URL}}/projects?skip=0&limit=10&featured_only=false",
+              "host": ["BASE_URL"],
+              "path": ["projects"],
+              "query": [
+                {
+                  "key": "skip",
+                  "value": "0"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "featured_only",
+                  "value": "false"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Project",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{BASE_URL}}/projects/{{PROJECT_ID}}",
+              "host": ["BASE_URL"],
+              "path": ["projects", "{{PROJECT_ID}}"]
+            }
+          }
+        },
+        {
+          "name": "Create Project",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/projects",
+              "host": ["BASE_URL"],
+              "path": ["projects"]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "My Awesome Project"
+                },
+                {
+                  "key": "tagline",
+                  "value": "Short description"
+                },
+                {
+                  "key": "description",
+                  "value": "Detailed description"
+                },
+                {
+                  "key": "tech_stack",
+                  "value": "Python,PyTorch,FastAPI"
+                },
+                {
+                  "key": "github_url",
+                  "value": "https://github.com/user/repo"
+                },
+                {
+                  "key": "demo_url",
+                  "value": "https://demo.example.com"
+                },
+                {
+                  "key": "category",
+                  "value": "AI/ML"
+                },
+                {
+                  "key": "featured",
+                  "value": "true"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Certificates",
+      "item": [
+        {
+          "name": "Get All Certificates",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{BASE_URL}}/certificates?skip=0&limit=10",
+              "host": ["BASE_URL"],
+              "path": ["certificates"],
+              "query": [
+                {
+                  "key": "skip",
+                  "value": "0"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Certificate",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/certificates",
+              "host": ["BASE_URL"],
+              "path": ["certificates"]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "Deep Learning Specialization"
+                },
+                {
+                  "key": "issuer",
+                  "value": "DeepLearning.AI"
+                },
+                {
+                  "key": "issue_date",
+                  "value": "2023-06-15"
+                },
+                {
+                  "key": "verification_url",
+                  "value": "https://verify.example.com"
+                },
+                {
+                  "key": "category",
+                  "value": "AI & ML"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Skills",
+      "item": [
+        {
+          "name": "Get All Skills",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{BASE_URL}}/skills",
+              "host": ["BASE_URL"],
+              "path": ["skills"]
+            }
+          }
+        },
+        {
+          "name": "Create Skill",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/skills",
+              "host": ["BASE_URL"],
+              "path": ["skills"]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "PyTorch"
+                },
+                {
+                  "key": "category",
+                  "value": "ML Frameworks"
+                },
+                {
+                  "key": "proficiency",
+                  "value": "Expert"
+                },
+                {
+                  "key": "years_experience",
+                  "value": "4"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Experience",
+      "item": [
+        {
+          "name": "Get All Experience",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{BASE_URL}}/experience",
+              "host": ["BASE_URL"],
+              "path": ["experience"]
+            }
+          }
+        },
+        {
+          "name": "Create Experience",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/experience",
+              "host": ["BASE_URL"],
+              "path": ["experience"]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "role",
+                  "value": "Senior ML Engineer"
+                },
+                {
+                  "key": "company",
+                  "value": "Tech Company"
+                },
+                {
+                  "key": "start_date",
+                  "value": "2023-06"
+                },
+                {
+                  "key": "is_current",
+                  "value": "true"
+                },
+                {
+                  "key": "description",
+                  "value": "Led ML infrastructure"
+                },
+                {
+                  "key": "type",
+                  "value": "Employment"
+                },
+                {
+                  "key": "location",
+                  "value": "San Francisco"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Resume",
+      "item": [
+        {
+          "name": "Parse Resume",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{TOKEN}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/resume/parse",
+              "host": ["BASE_URL"],
+              "path": ["resume", "parse"]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": "resume.pdf"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "GitHub Integration",
+      "item": [
+        {
+          "name": "Get GitHub User",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{BASE_URL}}/github/user/abishekr",
+              "host": ["BASE_URL"],
+              "path": ["github", "user", "abishekr"]
+            }
+          }
+        },
+        {
+          "name": "Get GitHub Repos",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{BASE_URL}}/github/repos/abishekr?sort=stars",
+              "host": ["BASE_URL"],
+              "path": ["github", "repos", "abishekr"],
+              "query": [
+                {
+                  "key": "sort",
+                  "value": "stars"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "AI Metrics",
+      "item": [
+        {
+          "name": "Get AI Metrics",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{BASE_URL}}/ai/metrics?limit=100",
+              "host": ["BASE_URL"],
+              "path": ["ai", "metrics"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "100"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Training Logs",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{BASE_URL}}/ai/training-logs?limit=100",
+              "host": ["BASE_URL"],
+              "path": ["ai", "training-logs"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "100"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Health Check",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{BASE_URL}}/health",
+              "host": ["BASE_URL"],
+              "path": ["health"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "BASE_URL",
+      "value": "http://localhost:8000/api/v1"
+    },
+    {
+      "key": "TOKEN",
+      "value": ""
+    }
+  ]
+}

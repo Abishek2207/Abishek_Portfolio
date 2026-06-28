@@ -1,0 +1,55 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["native", "windows"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  title       String
+  tagline     String
+  description String
+  techStack   String   // Stored as a comma-separated string or JSON
+  githubUrl   String?
+  demoUrl     String?
+  status      String   @default("Ongoing")
+  category    String   @default("AI")
+  createdAt   DateTime @default(now())
+}
+
+model Certificate {
+  id              String   @id @default(cuid())
+  uid             String   @unique // Unique ID for verification
+  title           String
+  issuer          String
+  date            String
+  verificationUrl String?
+  imagePath       String?
+  verified        Boolean  @default(true)
+  category        String   @default("AI")
+  createdAt   DateTime @default(now())
+}
+
+model Experience {
+  id          String   @id @default(cuid())
+  role        String
+  company     String
+  duration    String
+  description String
+  type        String   @default("Internship")
+  createdAt   DateTime @default(now())
+}
+
+model TrainingLog {
+  id        String   @id @default(cuid())
+  timestamp DateTime @default(now())
+  message   String
+  level     String   @default("INFO")
+}

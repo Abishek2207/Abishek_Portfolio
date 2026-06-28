@@ -1,0 +1,373 @@
+"use client";
+
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { GlowBorder } from "@/components/ReactBits/GlowBorder";
+import { Spotlight } from "@/components/ReactBits/Spotlight";
+
+const projects = [
+  {
+    id: "tulasiai",
+    title: "TulasiAI",
+    subtitle: "AI Career Intelligence Platform",
+    description: "An AI-powered career intelligence ecosystem for students and professionals. Features AI agents for resume analysis, interview preparation, opportunity discovery, and career guidance — all in one unified platform.",
+    longDescription: "TulasiAI is built on a modern AI stack combining Large Language Models, Retrieval-Augmented Generation (RAG), and autonomous AI Agents. The platform provides personalized career roadmaps, AI-powered resume scoring, mock interview simulations, and real-time job matching. As Founder, I architected the entire system from database schema to LLM prompt pipelines.",
+    problem: "Students and early-career professionals lack personalised, AI-driven guidance for navigating career paths, preparing for interviews, and discovering opportunities aligned to their actual skills.",
+    solution: "A unified platform that uses LLMs + RAG to deliver real-time, context-aware career intelligence — personalised roadmaps, resume scoring, mock interviews, and opportunity matching.",
+    architecture: "Next.js frontend → FastAPI backend → PostgreSQL + pgvector → LLM layer (RAG pipeline) → AI Agents orchestration",
+    lessons: "Learned the importance of chunking strategies in RAG, prompt engineering for structured outputs, and building agent retry loops with fallback strategies.",
+    tech: ["Next.js", "React", "FastAPI", "Python", "PostgreSQL", "LLMs", "RAG", "AI Agents"],
+    category: "Career AI",
+    status: "Active · Production",
+    statusColor: "#10b981",
+    accentColor: "var(--accent-cyan)",
+    glowColor: "rgba(0,212,255,0.12)",
+    emoji: "🧠",
+    github: "https://github.com/Abishek2207",
+    demo: null,
+    features: ["Resume AI Analysis", "Mock Interviews", "Opportunity Discovery", "Career Roadmaps"],
+  },
+  {
+    id: "tulasihealth",
+    title: "TulasiHealth",
+    subtitle: "Unified Healthcare Intelligence Platform",
+    description: "A healthcare interoperability platform bridging AYUSH/NAMASTE and ICD-11 global standards. Enables seamless medical data exchange and intelligent health record management.",
+    longDescription: "TulasiHealth uses NLP and Machine Learning to interpret and translate between traditional Indian healthcare taxonomies (AYUSH, NAMASTE) and the international ICD-11 standard, enabling better health data interoperability across hospitals, clinics, and government systems.",
+    problem: "India's healthcare data exists in fragmented silos — traditional AYUSH systems cannot communicate with modern ICD-11 compliant platforms, causing loss of critical patient history.",
+    solution: "An NLP-powered translation layer that maps AYUSH/NAMASTE health codes to ICD-11 standards, with a unified API for health record exchange.",
+    architecture: "FastAPI REST API → NLP classification pipeline → PostgreSQL health records DB → ICD-11 mapping layer",
+    lessons: "Deep-dived into healthcare ontologies, NLP entity extraction challenges in the medical domain, and the complexity of multi-standard data normalisation.",
+    tech: ["FastAPI", "Python", "PostgreSQL", "NLP", "ML", "Healthcare AI"],
+    category: "Healthcare AI",
+    status: "In Development",
+    statusColor: "var(--accent-purple)",
+    accentColor: "var(--accent-purple)",
+    glowColor: "rgba(124,58,237,0.12)",
+    emoji: "🏥",
+    github: "https://github.com/Abishek2207",
+    demo: null,
+    features: ["AYUSH-ICD11 Bridge", "NLP Parsing", "Health Data API", "Medical Intelligence"],
+  },
+  {
+    id: "weavetales",
+    title: "WeaveTales",
+    subtitle: "AI-Powered Handloom Commerce & Discovery",
+    description: "A computer vision-based handloom discovery and virtual try-on platform that connects artisans with global buyers, preserving India's handloom heritage through AI.",
+    longDescription: "WeaveTales uses Computer Vision for pattern recognition, fabric texture analysis, and virtual try-on technology to create an immersive handloom commerce experience. The platform supports artisan discovery, authentic product certification, and direct commerce — helping preserve India's handloom heritage.",
+    problem: "Indian handloom artisans lack digital reach. Buyers cannot discover authentic products, and the heritage is dying due to lack of market access.",
+    solution: "A CV-powered platform that digitises handloom patterns, enables visual search, and provides a virtual try-on experience — bridging artisans and global buyers.",
+    architecture: "React frontend → FastAPI backend → OpenCV/ML pattern recognition → Product catalogue DB → Virtual try-on engine",
+    lessons: "Gained expertise in texture-based feature extraction with OpenCV, building visual similarity search, and handling diverse lighting conditions in product photography.",
+    tech: ["Computer Vision", "React", "FastAPI", "Python", "ML", "OpenCV"],
+    category: "Computer Vision",
+    status: "In Development",
+    statusColor: "#10b981",
+    accentColor: "#e879f9",
+    glowColor: "rgba(232,121,249,0.12)",
+    emoji: "🧵",
+    github: "https://github.com/Abishek2207",
+    demo: null,
+    features: ["Virtual Try-On", "Pattern Recognition", "Artisan Discovery", "Commerce Platform"],
+  },
+  {
+    id: "oceanguard",
+    title: "OceanGuard AI",
+    subtitle: "Marine Risk Detection Platform",
+    description: "An AI-powered maritime intelligence platform for detecting dark fishing risks, monitoring illegal fishing activities, and providing real-time marine threat intelligence.",
+    longDescription: "OceanGuard AI combines Geospatial AI, Computer Vision, and satellite-derived data analysis to identify suspicious maritime patterns, track vessels in restricted zones, and generate risk intelligence reports for marine authorities and environmental organisations.",
+    problem: "Illegal dark fishing costs the global economy billions annually and devastates marine ecosystems. Existing monitoring is manual, slow, and unable to process the volume of satellite data available.",
+    solution: "An AI platform that analyses AIS vessel data and satellite imagery to automatically detect dark fishing patterns, restricted-zone violations, and generate actionable risk intelligence.",
+    architecture: "React dashboard → FastAPI backend → Geospatial AI (vessel pattern ML) → Satellite data ingestion → Risk scoring engine",
+    lessons: "Learned geospatial data processing (GeoJSON, shapefiles), anomaly detection on time-series vessel trajectories, and building real-time alerting pipelines.",
+    tech: ["Computer Vision", "Geospatial AI", "FastAPI", "Python", "React"],
+    category: "Geospatial AI",
+    status: "Prototype",
+    statusColor: "var(--accent-cyan)",
+    accentColor: "#10b981",
+    glowColor: "rgba(16,185,129,0.12)",
+    emoji: "🌊",
+    github: "https://github.com/Abishek2207",
+    demo: null,
+    features: ["Dark Fishing Detection", "Vessel Tracking", "Risk Scoring", "Marine Intelligence"],
+  },
+];
+
+function ProjectModal({ proj, onClose }: { proj: typeof projects[0]; onClose: () => void }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={onClose}
+      style={{
+        position: "fixed",
+        inset: 0,
+        zIndex: 2000,
+        background: "rgba(0,0,0,0.88)",
+        backdropFilter: "blur(20px)",
+        WebkitBackdropFilter: "blur(20px)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: 24,
+      }}
+    >
+      <motion.div
+        initial={{ scale: 0.92, opacity: 0, y: 24 }}
+        animate={{ scale: 1, opacity: 1, y: 0 }}
+        exit={{ scale: 0.92, opacity: 0, y: 24 }}
+        transition={{ type: "spring", damping: 28, stiffness: 320 }}
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          background: "rgba(10,10,10,0.95)",
+          backdropFilter: "blur(40px)",
+          border: `1px solid ${proj.accentColor}33`,
+          borderRadius: 24,
+          padding: "36px 36px 32px",
+          maxWidth: 660,
+          width: "100%",
+          maxHeight: "90vh",
+          overflowY: "auto",
+          boxShadow: `0 0 80px ${proj.glowColor}, 0 40px 100px rgba(0,0,0,0.6)`,
+          position: "relative",
+        }}
+      >
+        {/* Header */}
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 28 }}>
+          <div>
+            <span style={{ fontSize: 44 }}>{proj.emoji}</span>
+            <h2 style={{ fontFamily: "var(--font-display)", fontSize: 28, fontWeight: 800, letterSpacing: "-0.02em", marginTop: 8, marginBottom: 4 }}>
+              {proj.title}
+            </h2>
+            <p style={{ color: proj.accentColor, fontSize: 14, fontWeight: 500 }}>{proj.subtitle}</p>
+          </div>
+          <button
+            onClick={onClose}
+            aria-label="Close modal"
+            style={{
+              background: "rgba(255,255,255,0.06)",
+              border: "1px solid rgba(255,255,255,0.1)",
+              borderRadius: 10,
+              width: 36, height: 36,
+              display: "flex", alignItems: "center", justifyContent: "center",
+              cursor: "pointer", color: "var(--text-muted)", fontSize: 18, flexShrink: 0,
+              transition: "all 0.2s",
+            }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.12)"; (e.currentTarget as HTMLButtonElement).style.color = "#fff"; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.06)"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-muted)"; }}
+          >
+            ×
+          </button>
+        </div>
+
+        {/* Status */}
+        <span style={{
+          display: "inline-flex", alignItems: "center", gap: 6,
+          padding: "4px 12px", borderRadius: 999,
+          background: `${proj.statusColor}15`, border: `1px solid ${proj.statusColor}33`,
+          fontFamily: "var(--font-mono)", fontSize: 11, color: proj.statusColor, letterSpacing: "0.07em",
+          marginBottom: 24,
+        }}>
+          <span style={{ width: 5, height: 5, borderRadius: "50%", background: proj.statusColor }} />
+          {proj.status}
+        </span>
+
+        {/* Sections */}
+        {[
+          { label: "Problem", content: proj.problem },
+          { label: "Solution", content: proj.solution },
+          { label: "Architecture", content: proj.architecture, mono: true },
+          { label: "Lessons Learned", content: proj.lessons },
+        ].map(({ label, content, mono }) => (
+          <div key={label} style={{ marginBottom: 22 }}>
+            <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: proj.accentColor, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 8 }}>
+              {label}
+            </div>
+            <p style={{ fontSize: 14, color: "var(--text-secondary)", lineHeight: 1.75, fontFamily: mono ? "var(--font-mono)" : undefined }}>
+              {content}
+            </p>
+          </div>
+        ))}
+
+        {/* Tech stack */}
+        <div style={{ marginBottom: 24 }}>
+          <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: proj.accentColor, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 10 }}>Tech Stack</div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 7 }}>
+            {proj.tech.map((t) => (
+              <span key={t} className="tag">{t}</span>
+            ))}
+          </div>
+        </div>
+
+        {/* Actions */}
+        <div style={{ display: "flex", gap: 12, paddingTop: 4 }}>
+          <a href={proj.github} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ flex: 1, justifyContent: "center" }}>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" />
+            </svg>
+            View on GitHub
+          </a>
+          {proj.demo && (
+            <a href={proj.demo} target="_blank" rel="noopener noreferrer" className="btn-ghost" style={{ flex: 1, justifyContent: "center" }}>
+              Live Demo
+            </a>
+          )}
+          <button onClick={onClose} className="btn-ghost" style={{ justifyContent: "center" }}>Close</button>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+export default function Projects() {
+  const [selected, setSelected] = useState<typeof projects[0] | null>(null);
+
+  return (
+    <section id="projects" className="section" style={{ background: "rgba(0,0,0,0.35)", position: "relative" }}>
+      <Spotlight color="rgba(0,212,255,0.06)" size={600} />
+      <div className="ambient-blob" style={{ width: 500, height: 500, background: "var(--accent-cyan)", top: "10%", right: "-15%", opacity: 0.04 }} />
+
+      <div className="container">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          style={{ marginBottom: 64 }}
+        >
+          <div className="section-label">Projects</div>
+          <h2 className="section-title">
+            What I've{" "}
+            <span className="text-gradient-cyan">Built.</span>
+          </h2>
+          <p className="section-sub">
+            AI-powered platforms solving real problems across career intelligence, healthcare, handloom commerce, and marine safety.
+          </p>
+        </motion.div>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gap: 24,
+          }}
+        >
+          {projects.map((proj, i) => (
+            <motion.div
+              key={proj.id}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.55 }}
+            >
+              <GlowBorder
+                glowColor={proj.glowColor.replace("0.12", "0.6")}
+                borderRadius={20}
+                style={{ height: "100%" }}
+              >
+                <motion.div
+                  className="project-card"
+                  whileHover={{ y: -6, scale: 1.01 }}
+                  transition={{ duration: 0.3 }}
+                  onClick={() => setSelected(proj)}
+                  style={{
+                    borderRadius: 20,
+                    overflow: "hidden",
+                    cursor: "pointer",
+                    height: "100%",
+                    background: "linear-gradient(145deg, rgba(255,255,255,0.04) 0%, rgba(0,0,0,0.4) 100%)",
+                    border: `1px solid ${proj.accentColor}1a`,
+                  }}
+                >
+                  {/* Top accent line */}
+                  <div style={{ height: 2, background: `linear-gradient(90deg, ${proj.accentColor}, transparent)` }} />
+
+                  <div style={{ padding: "26px 26px 22px" }}>
+                    {/* Header */}
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 18 }}>
+                      <div>
+                        <div style={{ fontSize: 30, marginBottom: 6 }}>{proj.emoji}</div>
+                        <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: proj.accentColor, letterSpacing: "0.12em", textTransform: "uppercase" }}>
+                          {proj.category}
+                        </span>
+                      </div>
+                      <span style={{
+                        display: "flex", alignItems: "center", gap: 5,
+                        fontFamily: "var(--font-mono)", fontSize: 10,
+                        color: proj.statusColor, letterSpacing: "0.06em",
+                      }}>
+                        <span style={{ width: 5, height: 5, borderRadius: "50%", background: proj.statusColor, flexShrink: 0 }} />
+                        {proj.status}
+                      </span>
+                    </div>
+
+                    {/* Title */}
+                    <h3 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(20px, 3vw, 24px)", fontWeight: 800, letterSpacing: "-0.02em", color: "#fff", marginBottom: 4 }}>
+                      {proj.title}
+                    </h3>
+                    <div style={{ fontFamily: "var(--font-body)", fontSize: 13, color: proj.accentColor, marginBottom: 14, fontWeight: 500 }}>
+                      {proj.subtitle}
+                    </div>
+
+                    {/* Description */}
+                    <p style={{ fontSize: 14, color: "var(--text-muted)", lineHeight: 1.7, marginBottom: 18 }}>
+                      {proj.description}
+                    </p>
+
+                    {/* Feature pills */}
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 18 }}>
+                      {proj.features.map((f) => (
+                        <span key={f} style={{
+                          padding: "3px 10px", borderRadius: 6, fontSize: 11,
+                          fontFamily: "var(--font-mono)",
+                          background: proj.glowColor,
+                          border: `1px solid ${proj.accentColor}33`,
+                          color: proj.accentColor,
+                        }}>
+                          {f}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Tech tags */}
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 22 }}>
+                      {proj.tech.slice(0, 5).map((t) => (<span key={t} className="tag">{t}</span>))}
+                      {proj.tech.length > 5 && <span className="tag">+{proj.tech.length - 5}</span>}
+                    </div>
+
+                    {/* Actions */}
+                    <div style={{ display: "flex", gap: 10 }}>
+                      <button
+                        onClick={(e) => { e.stopPropagation(); setSelected(proj); }}
+                        className="btn-ghost"
+                        style={{ flex: 1, justifyContent: "center", padding: "10px", fontSize: 13 }}
+                      >
+                        View Details
+                      </button>
+                      <a
+                        href={proj.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="btn-ghost"
+                        style={{ padding: "10px 16px", fontSize: 13 }}
+                        aria-label={`View ${proj.title} on GitHub`}
+                      >
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </motion.div>
+              </GlowBorder>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      <AnimatePresence>
+        {selected && <ProjectModal proj={selected} onClose={() => setSelected(null)} />}
+      </AnimatePresence>
+    </section>
+  );
+}

@@ -1,0 +1,47 @@
+export const certificates = [
+  {
+    id: "ai-engineer-llm",
+    title: "AI Engineer Core Track (LLMs)",
+    issuer: "Advanced AI Certification Platform",
+    date: "2025",
+    credentialUrl: "#",
+    description:
+      "Comprehensive certification covering Large Language Models, prompt engineering, fine-tuning, and LLM deployment in production environments.",
+    color: "#00d4ff",
+    glow: "rgba(0,212,255,0.2)",
+    icon: "\u{1F916}",
+    image: "/certificates/images/ai-engineer-llm.jpg",
+    pdf: "/certificates/pdfs/ai-engineer-llm.pdf",
+    category: "AI Engineering",
+  },
+  {
+    id: "tansam-aiml",
+    title: "Artificial Intelligence & Machine Learning Internship",
+    issuer: "TANSAM Center of Excellence",
+    date: "May 2025",
+    credentialUrl: "#",
+    description:
+      "Official certification for completing AI/ML internship at TANSAM — a Government of Tamil Nadu initiative for AI training and research.",
+    color: "#7c3aed",
+    glow: "rgba(124,58,237,0.2)",
+    icon: "\u{1F3DB}\u{FE0F}",
+    image: "/certificates/images/tansam-aiml.jpg",
+    pdf: "/certificates/pdfs/tansam-aiml.pdf",
+    category: "Internship",
+  },
+  {
+    id: "walmart-forage",
+    title: "Advanced Software Engineering Job Simulation",
+    issuer: "Forage \u00D7 Walmart Global Tech",
+    date: "2025",
+    credentialUrl: "#",
+    description:
+      "Completed advanced software engineering simulation covering system architecture, design patterns, and production-grade engineering practices.",
+    color: "#e879f9",
+    glow: "rgba(232,121,249,0.2)",
+    icon: "\u{1F6D2}",
+    image: "/certificates/images/walmart-forage.jpg",
+    pdf: "/certificates/pdfs/walmart-forage.pdf",
+    category: "Software Engineering",
+  },
+];
