@@ -11,6 +11,7 @@ const timelineEvents = [
     description: "Participant in the most number of participants coloring simultaneously (Single Venue) counted to 6,487.",
     type: "achievement",
     color: "var(--accent-purple)",
+    image: "/record.png"
   },
   {
     year: "2024",
@@ -27,6 +28,7 @@ const timelineEvents = [
     description: "Applied data analytics and machine learning techniques to generate actionable business insights.",
     type: "experience",
     color: "var(--accent-cyan)",
+    image: "/tansam.png"
   },
   {
     year: "2025",
@@ -35,6 +37,16 @@ const timelineEvents = [
     description: "Handloom Hackathon 2025 (National Finalist), NASA Space Apps Challenge (Participant), SIH 2k25 (Intra-College Winning Team), USAII Global AI Hackathon (Top 25% Qualifier).",
     type: "achievement",
     color: "#e879f9",
+    image: "/handloom.png"
+  },
+  {
+    year: "2025",
+    title: "RightsX Summit Delegate",
+    org: "Palais Wilson, Geneva",
+    description: "Approved delegate for the Innovating for Humanity Summit in Geneva (Dec 2025).",
+    type: "achievement",
+    color: "var(--accent-purple)",
+    image: "/rightsx.png"
   },
   {
     year: "2026",
@@ -101,6 +113,7 @@ function EventCard({ event, align }: { event: typeof timelineEvents[0]; align: "
       background: "rgba(255,255,255,0.025)",
       border: `1px solid rgba(255,255,255,0.07)`,
       borderRadius: 16, padding: "20px 22px", textAlign: align,
+      overflow: "hidden"
     }}>
       <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: event.color, letterSpacing: "0.1em", marginBottom: 6 }}>{event.year}</div>
       <h3 style={{ fontFamily: "var(--font-display)", fontSize: 17, fontWeight: 700, color: "#fff", marginBottom: 4 }}>
@@ -108,7 +121,13 @@ function EventCard({ event, align }: { event: typeof timelineEvents[0]; align: "
         {event.isCurrent && <span style={{ marginLeft: 8, padding: "2px 8px", borderRadius: 999, background: "rgba(0,212,255,0.12)", border: "1px solid rgba(0,212,255,0.3)", fontSize: 10, fontFamily: "var(--font-mono)", color: "var(--accent-cyan)", verticalAlign: "middle", letterSpacing: "0.08em" }}>NOW</span>}
       </h3>
       <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: event.color, marginBottom: 10, opacity: 0.8 }}>{event.org}</div>
-      <p style={{ fontSize: 13, color: "var(--text-muted)", lineHeight: 1.7 }}>{event.description}</p>
+      <p style={{ fontSize: 13, color: "var(--text-muted)", lineHeight: 1.7, marginBottom: event.image ? 16 : 0 }}>{event.description}</p>
+      {event.image && (
+        <div style={{ marginTop: 12, borderRadius: 12, overflow: "hidden", border: `1px solid rgba(255,255,255,0.1)` }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={event.image} alt={event.title} style={{ width: "100%", height: "auto", display: "block" }} />
+        </div>
+      )}
     </div>
   );
 }
@@ -129,11 +148,17 @@ export default function Timeline() {
             {timelineEvents.map((event, i) => (
               <motion.div key={i} initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-60px" }} transition={{ delay: i * 0.08, duration: 0.5 }} style={{ position: "relative", marginBottom: 32 }}>
                 <div style={{ position: "absolute", left: -39, top: 20, width: 12, height: 12, borderRadius: "50%", background: event.color, boxShadow: `0 0 12px ${event.color}80`, border: "2px solid #030303" }} />
-                <div style={{ background: "rgba(255,255,255,0.025)", border: `1px solid ${event.color}22`, borderRadius: 14, padding: "18px 20px" }}>
+                <div style={{ background: "rgba(255,255,255,0.025)", border: `1px solid ${event.color}22`, borderRadius: 14, padding: "18px 20px", overflow: "hidden" }}>
                   <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: event.color, letterSpacing: "0.1em", marginBottom: 4 }}>{event.year}</div>
                   <h3 style={{ fontFamily: "var(--font-display)", fontSize: 16, fontWeight: 700, color: "#fff", marginBottom: 3 }}>{event.title}</h3>
                   <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: event.color, marginBottom: 8, opacity: 0.8 }}>{event.org}</div>
-                  <p style={{ fontSize: 13, color: "var(--text-muted)", lineHeight: 1.65 }}>{event.description}</p>
+                  <p style={{ fontSize: 13, color: "var(--text-muted)", lineHeight: 1.65, marginBottom: event.image ? 14 : 0 }}>{event.description}</p>
+                  {event.image && (
+                    <div style={{ marginTop: 12, borderRadius: 10, overflow: "hidden", border: `1px solid rgba(255,255,255,0.1)` }}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={event.image} alt={event.title} style={{ width: "100%", height: "auto", display: "block" }} />
+                    </div>
+                  )}
                 </div>
               </motion.div>
             ))}
