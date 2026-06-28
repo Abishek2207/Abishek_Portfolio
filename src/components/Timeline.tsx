@@ -8,10 +8,11 @@ const timelineEvents = [
     year: "2020",
     title: "Elite World Records",
     org: "Participant",
-    description: "Participant in the most number of participants coloring simultaneously (Single Venue) counted to 6,487.",
+    description: "Participant in the most number of participants coloring simultaneously (Single Venue) counted to 6,487 — at Reserve Line Grounds, Madurai District. Record License: EWR20206623.",
     type: "achievement",
     color: "var(--accent-purple)",
-    image: "/record.png"
+    image: "/ABISHEK R_certificate.png",
+    images: [] as string[],
   },
   {
     year: "2024",
@@ -20,33 +21,64 @@ const timelineEvents = [
     description: "Began pursuing Bachelor of Technology in Artificial Intelligence and Machine Learning. Current CGPA: 7.87/10.0.",
     type: "education",
     color: "var(--accent-cyan)",
+    image: "/panimalar_event.png",
+    images: [] as string[],
   },
   {
     year: "2025",
     title: "AI & ML Intern",
     org: "TANSAM Center of Excellence",
-    description: "Applied data analytics and machine learning techniques to generate actionable business insights.",
+    description: "Applied data analytics and machine learning techniques to generate actionable business insights in an Industry 4.0 environment.",
     type: "experience",
     color: "var(--accent-cyan)",
-    image: "/tansam.png"
+    image: "/tansam intenship.png",
+    images: [] as string[],
   },
   {
     year: "2025",
-    title: "Hackathon Achievements",
-    org: "Multiple Hackathons",
-    description: "Handloom Hackathon 2025 (National Finalist), NASA Space Apps Challenge (Participant), SIH 2k25 (Intra-College Winning Team), USAII Global AI Hackathon (Top 25% Qualifier).",
+    title: "Handloom Hackathon 2025",
+    org: "National Finalist · IIT Delhi",
+    description: "Shortlisted for the offline rounds of Handloom Hackathon 2025 at IIT Delhi — organized by Ministry of Textiles & DCHB. Presented WeaveTales, our AI-powered handloom commerce platform.",
     type: "achievement",
     color: "#e879f9",
-    image: "/handloom.png"
+    image: "/IMG-20250804-WA0027.jpeg",
+    images: [
+      "/Screenshot_2025-07-31-19-27-55-856_us.zoom.videomeetings.jpg",
+      "/Screenshot_2025-07-23-21-46-16-403_com.whatsapp.jpg",
+    ],
+  },
+  {
+    year: "2025",
+    title: "NASA Space Apps Challenge",
+    org: "Global Hackathon · Participant",
+    description: "Participated in the NASA Space Apps Challenge 2025, one of the world's largest hackathons, building solutions for real NASA mission challenges.",
+    type: "achievement",
+    color: "#e879f9",
+    image: "/nasa hackathon.jpg",
+    images: ["/nasasac_shortlist.png"],
   },
   {
     year: "2025",
     title: "RightsX Summit Delegate",
-    org: "Palais Wilson, Geneva",
-    description: "Approved delegate for the Innovating for Humanity Summit in Geneva (Dec 2025).",
+    org: "Palais Wilson, Geneva · Dec 2025",
+    description: "Approved delegate for the 'Innovating for Humanity' Summit at Palais Wilson, Geneva — the home of the UN Human Rights Office.",
     type: "achievement",
     color: "var(--accent-purple)",
-    image: "/rightsx.png"
+    image: "/rightxsummit_event.png",
+    images: [
+      "/united_nation.png",
+      "/Screenshot_2025-12-07-19-21-00-604_com.google.android.gm.jpg",
+    ],
+  },
+  {
+    year: "2025",
+    title: "Tech Talks & Workshops",
+    org: "Events & Seminars",
+    description: "Attended multiple technology workshops and innovation seminars, including sessions on Frameworks & Mental Models for problem-solving in AI and startups.",
+    type: "education",
+    color: "var(--accent-cyan)",
+    image: "/workshopimage.png",
+    images: [] as string[],
   },
   {
     year: "2026",
@@ -56,6 +88,7 @@ const timelineEvents = [
     type: "current",
     color: "#10b981",
     isCurrent: true,
+    images: [] as string[],
   },
 ];
 
@@ -126,6 +159,16 @@ function EventCard({ event, align }: { event: typeof timelineEvents[0]; align: "
         <div style={{ marginTop: 12, borderRadius: 12, overflow: "hidden", border: `1px solid rgba(255,255,255,0.1)` }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={event.image} alt={event.title} style={{ width: "100%", height: "auto", display: "block" }} />
+        </div>
+      )}
+      {event.images && event.images.length > 0 && (
+        <div style={{ display: "flex", gap: 8, marginTop: 10, overflowX: "auto", paddingBottom: 4 }}>
+          {event.images.map((img, idx) => (
+            <div key={idx} style={{ flexShrink: 0, borderRadius: 10, overflow: "hidden", border: `1px solid rgba(255,255,255,0.08)`, width: 130 }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={img} alt={`${event.title} proof ${idx + 1}`} style={{ width: "100%", height: 90, objectFit: "cover", display: "block" }} />
+            </div>
+          ))}
         </div>
       )}
     </div>
