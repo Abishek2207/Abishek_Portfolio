@@ -48,7 +48,8 @@ export const portfolioData = {
     },
   ],
   achievements: [
-    "Handloom Hackathon 2025 - National Finalist",
+    "RightsX Summit Delegate - Palais Wilson, Geneva (Dec 2025)",
+    "Handloom Hackathon 2025 - National Finalist (IIT Delhi)",
     "NASA Space Apps Challenge 2025 - Participant",
     "SIH 2k25 - Intra-College Winning Team",
     "USAII Global AI Hackathon 2026 Qualifier - Top 25% (Rank 107/424)",
