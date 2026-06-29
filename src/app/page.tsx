@@ -7,6 +7,7 @@ import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 import Timeline from "@/components/Timeline";
 import EventCarousel from "@/components/EventCarousel";
+import Certificates from "@/components/Certificates";
 import Contact from "@/components/Contact";
 import CustomCursor from "@/components/CustomCursor";
 import { FloatingDock } from "@/components/ReactBits/FloatingDock";
@@ -63,6 +64,16 @@ const dockItems = [
     ),
   },
   {
+    id: "certificates",
+    label: "Certificates",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <circle cx="12" cy="8" r="7" />
+        <polyline points="8.21,13.89 7,23 12,20 17,23 15.79,13.88" />
+      </svg>
+    ),
+  },
+  {
     id: "contact",
     label: "Contact",
     icon: (
@@ -97,6 +108,7 @@ export default function Portfolio() {
         <Skills />
         <Timeline />
         <EventCarousel />
+        <Certificates />
         <Contact />
       </main>
 

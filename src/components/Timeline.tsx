@@ -28,12 +28,12 @@ const timelineEvents = [
   {
     year: "2026",
     title: "USAII Global AI Hackathon",
-    org: "Top 25% (Rank 107/424) · Qualifier",
-    description: "Ranked in the top 25% globally (107 out of 424 teams) in the USAII Global AI Hackathon 2026 Qualifier.",
+    org: "Global Finalist (Rank 107/424)",
+    description: "Ranked in the top 25% globally (107 out of 424 teams) and reached the finals in the USAII Global AI Hackathon 2026.",
     type: "achievement",
     color: "#e879f9",
-    image: "",
-    images: [] as string[],
+    image: "/forge2qualifier2.png",
+    images: ["/forge2qualifierproof.png"] as string[],
   },
   {
     year: "2026",

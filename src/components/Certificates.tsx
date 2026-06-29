@@ -1,269 +1,114 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { certificates } from "@/data/certificates";
 
-function CertModal({ cert, onClose }: { cert: typeof certificates[0]; onClose: () => void }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      style={{
-        position: "fixed",
-        inset: 0,
-        zIndex: 2000,
-        background: "rgba(0,0,0,0.92)",
-        backdropFilter: "blur(16px)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: 24,
-      }}
-      onClick={onClose}
-    >
-      <motion.div
-        initial={{ scale: 0.9, opacity: 0, y: 20 }}
-        animate={{ scale: 1, opacity: 1, y: 0 }}
-        exit={{ scale: 0.9, opacity: 0, y: 20 }}
-        transition={{ type: "spring", damping: 25 }}
-        className="glass-strong"
-        style={{
-          borderRadius: 24,
-          padding: 40,
-          maxWidth: 600,
-          width: "100%",
-          maxHeight: "90vh",
-          overflow: "auto",
-          border: `1px solid ${cert.color}33`,
-          boxShadow: `0 0 80px ${cert.glow}`,
-        }}
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 24 }}>
-          <div>
-            <span style={{ fontSize: 40 }}>{cert.icon}</span>
-            <h2 style={{
-              fontFamily: "var(--font-display)",
-              fontSize: 22,
-              fontWeight: 800,
-              letterSpacing: "-0.02em",
-              marginTop: 8,
-              marginBottom: 4,
-            }}>{cert.title}</h2>
-            <p style={{ color: cert.color, fontSize: 13, fontWeight: 500 }}>{cert.issuer}</p>
-          </div>
-          <button
-            onClick={onClose}
-            style={{
-              background: "var(--bg-card)",
-              border: "1px solid var(--border-subtle)",
-              borderRadius: 8,
-              width: 36,
-              height: 36,
-              display: "flex", alignItems: "center", justifyContent: "center",
-              cursor: "pointer", color: "#fff", fontSize: 18, flexShrink: 0,
-            }}
-          >
-            \u00D7
-          </button>
-        </div>
-
-        <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: 24, fontSize: 14 }}>
-          {cert.description}
-        </p>
-
-        <div style={{
-          height: 200,
-          borderRadius: 16,
-          marginBottom: 24,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          border: "1px solid var(--border-subtle)",
-          background: `linear-gradient(135deg, ${cert.glow}, rgba(0,0,0,0.4))`,
-          overflow: "hidden",
-          position: "relative",
-        }}>
-          <img
-            src={cert.image}
-            alt={cert.title}
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
-            onError={(e) => {
-              const target = e.target as HTMLImageElement;
-              target.style.display = "none";
-              const placeholder = document.createElement("div");
-              placeholder.style.cssText = "position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;";
-              placeholder.innerHTML = `<span style="font-size:36px">${cert.icon}</span><span style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted)">Upload certificate to ${cert.image}</span>`;
-              target.parentElement?.appendChild(placeholder);
-            }}
-          />
-        </div>
-
-        <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-          <a
-            href={cert.image}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-ghost"
-            style={{ flex: 1, justifyContent: "center", minWidth: 140 }}
-          >
-            View Certificate
-          </a>
-          <a
-            href={cert.pdf || "#"}
-            download
-            className="btn-primary"
-            style={{ flex: 1, justifyContent: "center", minWidth: 140 }}
-          >
-            Download PDF
-          </a>
-          <a
-            href={cert.credentialUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-purple"
-            style={{ flex: 1, justifyContent: "center", minWidth: 140 }}
-          >
-            Verify Credential
-          </a>
-        </div>
-      </motion.div>
-    </motion.div>
-  );
-}
-
 export default function Certificates() {
-  const [selected, setSelected] = useState<typeof certificates[0] | null>(null);
-
   return (
-    <section id="certificates" className="section" style={{ background: "rgba(0,0,0,0.3)" }}>
-      <div className="container">
+    <section id="certificates" style={{ padding: "100px 24px", background: "var(--bg-base)", position: "relative" }}>
+      {/* Decorative background elements */}
+      <div style={{ position: "absolute", top: "10%", right: "5%", width: "400px", height: "400px", background: "radial-gradient(circle, rgba(108,92,231,0.05) 0%, transparent 70%)", zIndex: 0, pointerEvents: "none" }} />
+      
+      <div className="section-container" style={{ position: "relative", zIndex: 1, maxWidth: "1200px", margin: "0 auto" }}>
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           style={{ marginBottom: 64, textAlign: "center" }}
         >
-          <div className="section-label" style={{ justifyContent: "center" }}>
-            Certificates
+          <div style={{ display: "inline-block", padding: "8px 16px", borderRadius: "99px", background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)", marginBottom: 24, fontSize: 13, color: "var(--accent-purple)", fontFamily: "var(--font-mono)", textTransform: "uppercase", letterSpacing: "0.1em" }}>
+            Verifiable Credentials
           </div>
-          <h2 className="section-title" style={{ textAlign: "center" }}>
-            Certificate{" "}
-            <span className="text-gradient-cyan">Vault.</span>
+          <h2 style={{ fontSize: "clamp(36px, 5vw, 48px)", fontWeight: 800, letterSpacing: "-0.02em", marginBottom: 16 }}>
+            Achievements & <span style={{ background: "linear-gradient(135deg, #6C5CE7 0%, #00D2FF 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Certificates</span>
           </h2>
-          <p className="section-sub" style={{ margin: "0 auto", textAlign: "center" }}>
-            Verified credentials and professional certifications across AI engineering and software development.
+          <p style={{ color: "#AAB0C0", fontSize: 18, maxWidth: "600px", margin: "0 auto" }}>
+            Official recognitions, global hackathon finals, and virtual job simulations demonstrating industry-ready skills.
           </p>
         </motion.div>
 
         <div style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+          gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
           gap: 24,
         }}>
-          {certificates.map((cert, i) => (
-            <motion.div
-              key={cert.id}
-              initial={{ opacity: 0, y: 30 }}
+          {certificates.map((cert, index) => (
+            <motion.a
+              key={index}
+              href={cert.credentialUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.12 }}
-              className="cert-card"
-              onClick={() => setSelected(cert)}
-              style={{ cursor: "pointer" }}
-            >
-              <div style={{
-                height: 180,
-                background: `linear-gradient(135deg, ${cert.glow}, rgba(0,0,0,0.4))`,
+              transition={{ delay: index * 0.05 }}
+              style={{
                 display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
+                flexDirection: "column",
+                padding: "24px",
+                background: "rgba(255,255,255,0.02)",
+                border: "1px solid rgba(255,255,255,0.05)",
+                borderRadius: "20px",
+                textDecoration: "none",
+                color: "#fff",
+                transition: "all 0.3s",
                 position: "relative",
-                overflow: "hidden",
-                borderBottom: "1px solid var(--border-subtle)",
-              }}>
-                <div style={{ fontSize: 48 }}>{cert.icon}</div>
-                <div style={{
-                  position: "absolute",
-                  top: 12, right: 12,
-                  fontFamily: "var(--font-mono)",
-                  fontSize: 10,
-                  padding: "3px 10px",
-                  borderRadius: 999,
-                  background: "rgba(0,0,0,0.6)",
-                  border: `1px solid ${cert.color}55`,
-                  color: cert.color,
-                  backdropFilter: "blur(8px)",
-                }}>
-                  {cert.date}
+                overflow: "hidden"
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "translateY(-4px)";
+                e.currentTarget.style.background = "rgba(255,255,255,0.04)";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)";
+                e.currentTarget.style.boxShadow = `0 20px 40px ${cert.glow}`;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.background = "rgba(255,255,255,0.02)";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.05)";
+                e.currentTarget.style.boxShadow = "none";
+              }}
+            >
+              {/* Media Container */}
+              {cert.image ? (
+                <div style={{ height: "180px", marginBottom: "20px", borderRadius: "12px", overflow: "hidden", background: "#0B0F1A", position: "relative", border: "1px solid rgba(255,255,255,0.05)" }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={cert.image} alt={cert.title} style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.9, transition: "opacity 0.3s" }} />
+                </div>
+              ) : (
+                <div style={{ height: "180px", marginBottom: "20px", borderRadius: "12px", background: `linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01))`, display: "flex", alignItems: "center", justifyContent: "center", border: "1px solid rgba(255,255,255,0.05)", position: "relative", overflow: "hidden" }}>
+                  <div style={{ position: "absolute", inset: 0, background: `radial-gradient(circle at center, ${cert.glow}, transparent 70%)`, opacity: 0.5 }} />
+                  <div style={{ fontSize: 48, zIndex: 1, filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.5))" }}>
+                    {cert.icon}
+                  </div>
+                  <div style={{ position: "absolute", bottom: 12, right: 12, fontSize: 12, color: "rgba(255,255,255,0.3)", fontFamily: "var(--font-mono)", zIndex: 1, display: "flex", alignItems: "center", gap: 4 }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /><polyline points="10 9 9 9 8 9" /></svg>
+                    PDF
+                  </div>
+                </div>
+              )}
+              
+              {/* Content */}
+              <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 12 }}>
+                <div>
+                  <div style={{ color: cert.color, fontSize: 12, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 6 }}>
+                    {cert.category}
+                  </div>
+                  <h3 style={{ fontSize: "18px", fontWeight: 700, marginBottom: "6px", lineHeight: 1.3 }}>{cert.title}</h3>
+                  <p style={{ fontSize: "14px", color: "var(--text-muted)", marginBottom: 12, lineHeight: 1.5 }}>{cert.issuer} &bull; {cert.date}</p>
+                </div>
+                
+                <div style={{ width: 36, height: 36, borderRadius: 10, background: "rgba(255,255,255,0.03)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, color: "var(--text-secondary)", border: "1px solid rgba(255,255,255,0.05)" }}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                    <polyline points="15 3 21 3 21 9" />
+                    <line x1="10" y1="14" x2="21" y2="3" />
+                  </svg>
                 </div>
               </div>
-
-              <div style={{ padding: "20px 24px 24px" }}>
-                <div style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: 10,
-                  color: cert.color,
-                  letterSpacing: "0.1em",
-                  marginBottom: 8,
-                  textTransform: "uppercase",
-                }}>
-                  {cert.issuer}
-                </div>
-                <h3 style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: 16,
-                  fontWeight: 700,
-                  letterSpacing: "-0.01em",
-                  color: "#fff",
-                  marginBottom: 10,
-                  lineHeight: 1.3,
-                }}>
-                  {cert.title}
-                </h3>
-                <p style={{
-                  fontSize: 13,
-                  color: "var(--text-muted)",
-                  lineHeight: 1.6,
-                  marginBottom: 16,
-                }}>
-                  {cert.description}
-                </p>
-
-                <div style={{ display: "flex", gap: 10 }}>
-                  <button
-                    onClick={(e) => { e.stopPropagation(); setSelected(cert); }}
-                    className="btn-ghost"
-                    style={{ flex: 1, justifyContent: "center", fontSize: 12, padding: "8px" }}
-                  >
-                    View Certificate
-                  </button>
-                  <a
-                    href={cert.pdf || cert.image}
-                    download
-                    onClick={(e) => e.stopPropagation()}
-                    className="btn-ghost"
-                    style={{ padding: "8px 14px", fontSize: 12 }}
-                    title="Download PDF"
-                  >
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </div>
-
-      <AnimatePresence>
-        {selected && (
-          <CertModal cert={selected} onClose={() => setSelected(null)} />
-        )}
-      </AnimatePresence>
     </section>
   );
 }

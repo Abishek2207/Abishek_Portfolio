@@ -76,7 +76,9 @@ export default function EventCarousel() {
                 flexShrink: 0,
                 position: "relative",
                 background: "#000",
+                group: "true"
               }}
+              className="carousel-item-group"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -86,7 +88,7 @@ export default function EventCarousel() {
                   width: "100%",
                   height: "100%",
                   objectFit: "cover",
-                  transition: "transform 0.5s ease",
+                  transition: "transform 0.5s ease, opacity 0.5s ease",
                   opacity: 0.85
                 }}
                 onMouseEnter={(e) => {
@@ -98,6 +100,26 @@ export default function EventCarousel() {
                   e.currentTarget.style.opacity = "0.85";
                 }}
               />
+              <div 
+                style={{
+                  position: "absolute",
+                  bottom: 0, left: 0, right: 0,
+                  padding: "40px 16px 16px",
+                  background: "linear-gradient(to top, rgba(0,0,0,0.9), transparent)",
+                  pointerEvents: "none",
+                }}
+              >
+                <h4 style={{ 
+                  margin: 0, 
+                  color: "#fff", 
+                  fontSize: "14px", 
+                  fontWeight: 600, 
+                  lineHeight: 1.3,
+                  textShadow: "0 2px 4px rgba(0,0,0,0.5)"
+                }}>
+                  {photo.title}
+                </h4>
+              </div>
             </div>
           ))}
         </motion.div>
