@@ -1,106 +1,11 @@
 "use client";
 
-import { useRef, Suspense } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
 import { motion } from "framer-motion";
-import * as THREE from "three";
 import { MagneticButton } from "@/components/ReactBits/MagneticButton";
 import { GradientText } from "@/components/ReactBits/GradientText";
 import { Spotlight } from "@/components/ReactBits/Spotlight";
 
-/* ─── 3D Neural Orb (kept from original, performance-tuned) ─── */
-function NeuralOrb() {
-  const coreRef = useRef<THREE.Mesh>(null);
-  const ring1Ref = useRef<THREE.Mesh>(null);
-  const ring2Ref = useRef<THREE.Mesh>(null);
-  const ring3Ref = useRef<THREE.Mesh>(null);
-  const particlesRef = useRef<THREE.Points>(null);
-
-  const particlePositions = (() => {
-    const count = 220;
-    const pos = new Float32Array(count * 3);
-    for (let i = 0; i < count; i++) {
-      const phi = Math.acos(2 * Math.random() - 1);
-      const theta = Math.random() * Math.PI * 2;
-      const r = 1.7 + Math.random() * 0.6;
-      pos[i * 3] = r * Math.sin(phi) * Math.cos(theta);
-      pos[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
-      pos[i * 3 + 2] = r * Math.cos(phi);
-    }
-    return pos;
-  })();
-
-  useFrame((state) => {
-    const t = state.clock.getElapsedTime();
-    if (coreRef.current) {
-      coreRef.current.rotation.y = t * 0.25;
-      coreRef.current.rotation.x = Math.sin(t * 0.18) * 0.18;
-    }
-    if (ring1Ref.current) {
-      ring1Ref.current.rotation.z = t * 0.35;
-      ring1Ref.current.rotation.x = Math.sin(t * 0.12) * 0.3 + 0.5;
-    }
-    if (ring2Ref.current) {
-      ring2Ref.current.rotation.z = -t * 0.25;
-      ring2Ref.current.rotation.y = t * 0.18;
-    }
-    if (ring3Ref.current) {
-      ring3Ref.current.rotation.x = t * 0.18;
-      ring3Ref.current.rotation.z = Math.cos(t * 0.09) * 0.5;
-    }
-    if (particlesRef.current) {
-      particlesRef.current.rotation.y = t * 0.05;
-    }
-  });
-
-  return (
-    <group>
-      <ambientLight intensity={0.15} />
-      <pointLight position={[5, 5, 5]} intensity={2.5} color="#00d4ff" />
-      <pointLight position={[-5, -5, -5]} intensity={1} color="#7c3aed" />
-      <pointLight position={[0, 0, 0]} intensity={3} color="#00d4ff" distance={6} />
-
-      <mesh ref={coreRef}>
-        <icosahedronGeometry args={[1, 4]} />
-        <meshStandardMaterial color="#00d4ff" emissive="#00d4ff" emissiveIntensity={0.5} wireframe transparent opacity={0.85} />
-      </mesh>
-
-      <mesh>
-        <sphereGeometry args={[0.65, 32, 32]} />
-        <meshStandardMaterial color="#000" emissive="#00d4ff" emissiveIntensity={0.06} transparent opacity={0.9} />
-      </mesh>
-
-      <mesh ref={ring1Ref}>
-        <torusGeometry args={[1.5, 0.014, 8, 100]} />
-        <meshBasicMaterial color="#00d4ff" transparent opacity={0.75} />
-      </mesh>
-
-      <mesh ref={ring2Ref} rotation={[Math.PI / 3, 0, 0]}>
-        <torusGeometry args={[1.9, 0.01, 8, 100]} />
-        <meshBasicMaterial color="#7c3aed" transparent opacity={0.5} />
-      </mesh>
-
-      <mesh ref={ring3Ref} rotation={[Math.PI / 6, Math.PI / 4, 0]}>
-        <torusGeometry args={[2.2, 0.008, 8, 100]} />
-        <meshBasicMaterial color="#e879f9" transparent opacity={0.4} />
-      </mesh>
-
-      <points ref={particlesRef}>
-        <bufferGeometry>
-          <bufferAttribute
-            attach="attributes-position"
-            array={particlePositions}
-            itemSize={3}
-            count={220}
-            args={[particlePositions, 3]}
-          />
-        </bufferGeometry>
-        <pointsMaterial size={0.022} color="#00d4ff" transparent opacity={0.8} sizeAttenuation />
-      </points>
-    </group>
-  );
-}
-
+const ROLES = ["AI Engineer", "Founder @ TulasiAI", "Tech Content Creator"];
 
 export default function Hero() {
   return (
@@ -205,7 +110,7 @@ export default function Hero() {
                 fontWeight: 800,
                 letterSpacing: "-0.04em",
                 lineHeight: 0.93,
-                marginBottom: 20,
+                marginBottom: 24,
               }}
             >
               <GradientText from="#ffffff" via="rgba(255,255,255,0.9)" to="#00d4ff">
@@ -215,53 +120,70 @@ export default function Hero() {
               </GradientText>
             </motion.h1>
 
-            {/* Title */}
+            {/* Role titles */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.22 }}
-              style={{ marginBottom: 20 }}
+              style={{ marginBottom: 24, display: "flex", flexDirection: "column", gap: 6 }}
             >
-              <span
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "clamp(16px, 2.4vw, 22px)",
-                  fontWeight: 500,
-                  color: "var(--text-secondary)",
-                  letterSpacing: "-0.01em",
-                }}
-              >
-                Aspiring AI Engineer.{" "}
-                <GradientText from="#7c3aed" via="#e879f9" to="#7c3aed" animate>
-                  Founder.
-                </GradientText>{" "}
-                Builder.
-              </span>
+              {ROLES.map((role, i) => (
+                <motion.div
+                  key={role}
+                  initial={{ opacity: 0, x: -16 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.45, delay: 0.3 + i * 0.1 }}
+                  style={{ display: "flex", alignItems: "center", gap: 10 }}
+                >
+                  <span
+                    style={{
+                      width: 4,
+                      height: 4,
+                      borderRadius: "50%",
+                      background: i === 0 ? "var(--accent-cyan)" : i === 1 ? "var(--accent-purple)" : "#e879f9",
+                      boxShadow: `0 0 6px ${i === 0 ? "var(--accent-cyan)" : i === 1 ? "var(--accent-purple)" : "#e879f9"}`,
+                      flexShrink: 0,
+                    }}
+                  />
+                  <span
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      fontSize: "clamp(15px, 2vw, 20px)",
+                      fontWeight: 600,
+                      color: i === 0 ? "var(--accent-cyan)" : i === 1 ? "rgba(200,180,255,0.9)" : "#e879f9",
+                      letterSpacing: "-0.01em",
+                    }}
+                  >
+                    {role}
+                  </span>
+                </motion.div>
+              ))}
             </motion.div>
 
             {/* Description */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: 0.32 }}
+              transition={{ duration: 0.55, delay: 0.45 }}
               style={{
-                fontSize: 16,
+                fontSize: 15,
                 color: "var(--text-muted)",
-                lineHeight: 1.75,
+                lineHeight: 1.8,
                 maxWidth: 440,
                 marginBottom: 40,
               }}
             >
-              B.Tech AIML student at Panimalar Engineering College and
-              Founder of <span style={{ color: "var(--accent-cyan)" }}>TulasiAI</span>.
-              Building intelligent systems that solve real-world problems.
+              B.Tech AIML student at Panimalar Engineering College, Chennai.
+              Building production-ready AI systems using{" "}
+              <span style={{ color: "var(--accent-cyan)" }}>LLMs, RAG, Computer Vision & AI Agents</span>{" "}
+              that solve real-world problems.
             </motion.p>
 
             {/* CTA Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: 0.42 }}
+              transition={{ duration: 0.55, delay: 0.55 }}
               style={{ display: "flex", flexWrap: "wrap", gap: 12, marginBottom: 48 }}
             >
               <MagneticButton href="#projects" className="btn-primary" id="view-projects-btn">
@@ -275,7 +197,7 @@ export default function Hero() {
               </MagneticButton>
 
               <MagneticButton
-                href="/assets/resume/Abishek_R_Resume.pdf"
+                href="/Abishek.pdf"
                 download
                 className="btn-ghost"
                 id="download-resume-btn"
@@ -287,7 +209,7 @@ export default function Hero() {
               </MagneticButton>
 
               <MagneticButton href="#contact" className="btn-purple" id="contact-btn">
-                Let's Talk
+                Let&apos;s Talk
               </MagneticButton>
             </motion.div>
 
@@ -295,7 +217,7 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.55, delay: 0.55 }}
+              transition={{ duration: 0.55, delay: 0.7 }}
               style={{ display: "flex", gap: 20, flexWrap: "wrap" }}
             >
               {[
@@ -343,81 +265,159 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* ── RIGHT — 3D Orb ── */}
+          {/* ── RIGHT — Profile Photo ── */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.85 }}
+            initial={{ opacity: 0, scale: 0.88 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
             style={{
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              gap: 24,
+              gap: 28,
               position: "relative",
             }}
           >
-            {/* Glow ring behind orb */}
+            {/* Outer ambient glow */}
             <div
               aria-hidden
               style={{
                 position: "absolute",
-                width: 320,
-                height: 320,
+                width: 420,
+                height: 420,
                 borderRadius: "50%",
                 background:
-                  "radial-gradient(circle, rgba(0,212,255,0.12) 0%, rgba(124,58,237,0.06) 40%, transparent 70%)",
-                filter: "blur(30px)",
+                  "radial-gradient(circle, rgba(0,212,255,0.14) 0%, rgba(124,58,237,0.08) 40%, transparent 70%)",
+                filter: "blur(40px)",
                 top: "50%",
                 left: "50%",
-                transform: "translate(-50%, -50%)",
+                transform: "translate(-50%, -60%)",
+                pointerEvents: "none",
               }}
             />
 
-            <div
-              style={{
-                width: "100%",
-                maxWidth: 400,
-                aspectRatio: "1 / 1",
-                position: "relative",
-                animation: "float 4s ease-in-out infinite",
-              }}
-            >
-              <Canvas
-                camera={{ position: [0, 0, 5], fov: 60 }}
-                gl={{ antialias: true, alpha: true }}
-                style={{ borderRadius: "50%" }}
-                aria-label="Animated 3D AI neural network visualization"
-              >
-                <Suspense fallback={null}>
-                  <NeuralOrb />
-                </Suspense>
-              </Canvas>
+            {/* Profile photo container */}
+            <div style={{ position: "relative", animation: "float 5s ease-in-out infinite" }}>
+              {/* Rotating gradient ring */}
+              <div
+                aria-hidden
+                style={{
+                  position: "absolute",
+                  inset: -4,
+                  borderRadius: "50%",
+                  background: "conic-gradient(from 0deg, var(--accent-cyan), var(--accent-purple), #e879f9, var(--accent-cyan))",
+                  animation: "spin-slow 6s linear infinite",
+                  zIndex: 0,
+                }}
+              />
+              {/* White gap ring */}
+              <div
+                aria-hidden
+                style={{
+                  position: "absolute",
+                  inset: -1,
+                  borderRadius: "50%",
+                  background: "#030303",
+                  zIndex: 1,
+                }}
+              />
+              {/* Photo */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/abishekphoto.jpg"
+                alt="Abishek R — AI Engineer, Founder of TulasiAI"
+                style={{
+                  width: 300,
+                  height: 300,
+                  borderRadius: "50%",
+                  objectFit: "cover",
+                  objectPosition: "top center",
+                  display: "block",
+                  position: "relative",
+                  zIndex: 2,
+                }}
+              />
+              {/* Inner glow overlay */}
+              <div
+                aria-hidden
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  borderRadius: "50%",
+                  boxShadow: "inset 0 0 40px rgba(0,212,255,0.08)",
+                  zIndex: 3,
+                  pointerEvents: "none",
+                }}
+              />
             </div>
 
-            {/* Floating chips */}
-            <div style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "center" }}>
-              {["AI Engineer", "Founder · TulasiAI", "B.Tech AIML"].map((chip, i) => (
+            {/* Role chips */}
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap", justifyContent: "center" }}>
+              {[
+                { label: "AI Engineer", color: "var(--accent-cyan)", bg: "rgba(0,212,255,0.08)", border: "rgba(0,212,255,0.25)" },
+                { label: "Founder · TulasiAI", color: "rgba(200,180,255,0.9)", bg: "rgba(124,58,237,0.08)", border: "rgba(124,58,237,0.25)" },
+                { label: "Tech Content Creator", color: "#e879f9", bg: "rgba(232,121,249,0.08)", border: "rgba(232,121,249,0.25)" },
+              ].map((chip, i) => (
                 <motion.span
-                  key={chip}
+                  key={chip.label}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.7 + i * 0.12 }}
+                  transition={{ delay: 0.75 + i * 0.1 }}
                   style={{
                     padding: "5px 14px",
                     borderRadius: 999,
                     fontFamily: "var(--font-mono)",
                     fontSize: 11,
                     letterSpacing: "0.06em",
-                    background: "rgba(255,255,255,0.04)",
-                    border: "1px solid rgba(255,255,255,0.1)",
-                    color: "var(--text-secondary)",
+                    background: chip.bg,
+                    border: `1px solid ${chip.border}`,
+                    color: chip.color,
                     whiteSpace: "nowrap",
                   }}
                 >
-                  {chip}
+                  {chip.label}
                 </motion.span>
               ))}
             </div>
+
+            {/* Mini stat strip */}
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.05 }}
+              style={{
+                display: "flex",
+                gap: 20,
+                padding: "14px 24px",
+                background: "rgba(255,255,255,0.03)",
+                backdropFilter: "blur(16px)",
+                border: "1px solid rgba(255,255,255,0.08)",
+                borderRadius: 16,
+              }}
+            >
+              {[
+                { value: "4", label: "Live AI Products" },
+                { value: "8+", label: "Hackathons" },
+                { value: "Multiple", label: "Finalist" },
+              ].map((stat, i) => (
+                <div key={stat.label} style={{ textAlign: "center" }}>
+                  <div
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      fontSize: 20,
+                      fontWeight: 800,
+                      letterSpacing: "-0.02em",
+                      color: i === 0 ? "var(--accent-cyan)" : i === 1 ? "#e879f9" : "#10b981",
+                    }}
+                  >
+                    {stat.value}
+                  </div>
+                  <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, color: "var(--text-muted)", letterSpacing: "0.06em", textTransform: "uppercase" }}>
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </motion.div>
           </motion.div>
         </div>
       </div>
@@ -455,13 +455,17 @@ export default function Hero() {
       </motion.div>
 
       <style>{`
+        @keyframes spin-slow {
+          from { transform: rotate(0deg); }
+          to   { transform: rotate(360deg); }
+        }
         @media (max-width: 768px) {
           .hero-grid {
             grid-template-columns: 1fr !important;
             text-align: center;
           }
           .hero-grid > div:last-child { order: -1; }
-          .hero-grid > div:last-child > div { max-width: 260px !important; margin: 0 auto; }
+          .hero-grid > div:last-child img { width: 220px !important; height: 220px !important; }
         }
       `}</style>
     </section>

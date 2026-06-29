@@ -6,15 +6,16 @@ import { BlurTextReveal } from "@/components/ReactBits/BlurTextReveal";
 import { Spotlight } from "@/components/ReactBits/Spotlight";
 
 const stats = [
-  { value: "4+", label: "AI Projects Built", color: "var(--accent-cyan)" },
-  { value: "2+", label: "Hackathons Won", color: "var(--accent-purple)" },
-  { value: "3+", label: "AI Domains Covered", color: "#e879f9" },
-  { value: "7.87", label: "CGPA · B.Tech AIML", color: "#10b981" },
+  { value: "4", label: "Live AI Products", color: "var(--accent-cyan)" },
+  { value: "8+", label: "Hackathons Participated", color: "var(--accent-purple)" },
+  { value: "4", label: "AI Domains", color: "#e879f9" },
+  { value: "Multiple", label: "Hackathon Finalist", color: "#10b981" },
 ];
 
 const highlights = [
   { icon: "🎓", label: "Education", value: "B.Tech AIML · Panimalar Engineering College" },
   { icon: "🚀", label: "Role", value: "Founder · TulasiAI" },
+  { icon: "🎬", label: "Also", value: "Tech Content Creator" },
   { icon: "📍", label: "Location", value: "Chennai, Tamil Nadu, India" },
   { icon: "✉️", label: "Email", value: "abishekramamoorthy22@gmail.com", href: "mailto:abishekramamoorthy22@gmail.com" },
 ];
@@ -46,7 +47,7 @@ export default function About() {
             </h2>
 
             <BlurTextReveal
-              text="I am Abishek R — an Artificial Intelligence and Machine Learning student at Panimalar Engineering College, Chennai, and the Founder of TulasiAI."
+              text="I am Abishek R — a B.Tech Artificial Intelligence & Machine Learning student at Panimalar Engineering College, Chennai, and the Founder of TulasiAI."
               delay={0.05}
               className=""
               style={{ color: "var(--text-secondary)", lineHeight: 1.85, marginBottom: 18, fontSize: 15 }}
@@ -59,7 +60,8 @@ export default function About() {
               transition={{ duration: 0.55, delay: 0.3 }}
               style={{ color: "var(--text-secondary)", lineHeight: 1.85, marginBottom: 18, fontSize: 15 }}
             >
-              I focus on building AI-powered systems that solve practical problems across education, career growth, healthcare, handloom commerce, and environmental intelligence.
+              I am also a Tech Content Creator passionate about building AI products that solve real-world problems.
+              I build production-ready AI systems using LLMs, RAG, Computer Vision, AI Agents, FastAPI, React, Next.js and Python.
             </motion.p>
 
             <motion.p
@@ -67,9 +69,10 @@ export default function About() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.55, delay: 0.4 }}
-              style={{ color: "var(--text-secondary)", lineHeight: 1.85, marginBottom: 36, fontSize: 15 }}
+              style={{ color: "var(--text-secondary)", lineHeight: 1.85, marginBottom: 18, fontSize: 15 }}
             >
-              My approach: find where human potential is constrained by inefficiency, then build intelligent infrastructure to unlock it — using LLMs, RAG, Computer Vision, and AI Agents.
+              <span style={{ color: "var(--accent-cyan)", fontWeight: 600 }}>Mission: </span>
+              Build intelligent software that improves education, healthcare, commerce and environmental sustainability.
             </motion.p>
 
             <motion.div

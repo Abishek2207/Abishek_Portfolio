@@ -18,13 +18,13 @@ const projects = [
     lessons: "Learned the importance of chunking strategies in RAG, prompt engineering for structured outputs, and building agent retry loops with fallback strategies.",
     tech: ["Next.js", "React", "FastAPI", "Python", "PostgreSQL", "LLMs", "RAG", "AI Agents"],
     category: "Career AI",
-    status: "Active · Production",
+    status: "Live",
     statusColor: "#10b981",
     accentColor: "var(--accent-cyan)",
     glowColor: "rgba(0,212,255,0.12)",
-    emoji: "🧠",
+    logoUrl: "https://tulasiai.in/favicon.ico",
     github: "https://github.com/Abishek2207",
-    demo: null,
+    demo: "https://tulasiai.in",
     features: ["Resume AI Analysis", "Mock Interviews", "Opportunity Discovery", "Career Roadmaps"],
   },
   {
@@ -39,34 +39,34 @@ const projects = [
     lessons: "Deep-dived into healthcare ontologies, NLP entity extraction challenges in the medical domain, and the complexity of multi-standard data normalisation.",
     tech: ["FastAPI", "Python", "PostgreSQL", "NLP", "ML", "Healthcare AI"],
     category: "Healthcare AI",
-    status: "In Development",
-    statusColor: "var(--accent-purple)",
+    status: "Live",
+    statusColor: "#10b981",
     accentColor: "var(--accent-purple)",
     glowColor: "rgba(124,58,237,0.12)",
-    emoji: "🏥",
+    logoUrl: "https://tulasihealth.vercel.app/favicon.ico",
     github: "https://github.com/Abishek2207",
-    demo: null,
+    demo: "https://tulasihealth.vercel.app/",
     features: ["AYUSH-ICD11 Bridge", "NLP Parsing", "Health Data API", "Medical Intelligence"],
   },
   {
     id: "weavetales",
-    title: "WeaveTales",
-    subtitle: "AI-Powered Handloom Commerce & Discovery",
+    title: "WeaveTales AI",
+    subtitle: "AI Powered Handloom Discovery Platform",
     description: "A computer vision-based handloom discovery and virtual try-on platform that connects artisans with global buyers, preserving India's handloom heritage through AI.",
-    longDescription: "WeaveTales uses Computer Vision for pattern recognition, fabric texture analysis, and virtual try-on technology to create an immersive handloom commerce experience. The platform supports artisan discovery, authentic product certification, and direct commerce — helping preserve India's handloom heritage.",
+    longDescription: "WeaveTales AI uses Computer Vision for pattern recognition, fabric texture analysis, and virtual try-on technology to create an immersive handloom commerce experience. The platform supports artisan discovery, authentic product certification, and direct commerce — helping preserve India's handloom heritage.",
     problem: "Indian handloom artisans lack digital reach. Buyers cannot discover authentic products, and the heritage is dying due to lack of market access.",
     solution: "A CV-powered platform that digitises handloom patterns, enables visual search, and provides a virtual try-on experience — bridging artisans and global buyers.",
     architecture: "React frontend → FastAPI backend → Computer Vision pattern recognition → Product catalogue DB → Virtual try-on engine",
     lessons: "Gained expertise in texture-based feature extraction with CV models, building visual similarity search, and handling diverse lighting conditions in product photography.",
     tech: ["Computer Vision", "React", "FastAPI", "Python", "Machine Learning"],
     category: "Computer Vision",
-    status: "In Development",
+    status: "Live",
     statusColor: "#10b981",
     accentColor: "#e879f9",
     glowColor: "rgba(232,121,249,0.12)",
-    emoji: "🧵",
+    logoUrl: "https://weavetalesai.vercel.app/favicon.ico",
     github: "https://github.com/Abishek2207",
-    demo: null,
+    demo: "https://weavetalesai.vercel.app/",
     features: ["Virtual Try-On", "Pattern Recognition", "Artisan Discovery", "Commerce Platform"],
   },
   {
@@ -81,16 +81,52 @@ const projects = [
     lessons: "Learned large-scale data processing, anomaly detection on time-series vessel trajectories, and building real-time alerting pipelines.",
     tech: ["Computer Vision", "Deep Learning", "FastAPI", "Python", "React"],
     category: "Geospatial AI",
-    status: "Prototype",
-    statusColor: "var(--accent-cyan)",
+    status: "Live",
+    statusColor: "#10b981",
     accentColor: "#10b981",
     glowColor: "rgba(16,185,129,0.12)",
-    emoji: "🌊",
+    logoUrl: "https://oceanguardai.vercel.app/favicon.ico",
     github: "https://github.com/Abishek2207",
-    demo: null,
+    demo: "https://oceanguardai.vercel.app/",
     features: ["Dark Fishing Detection", "Vessel Tracking", "Risk Scoring", "Marine Intelligence"],
   },
 ];
+
+function ProjectLogo({ logoUrl, title, accentColor }: { logoUrl: string; title: string; accentColor: string }) {
+  return (
+    <div
+      style={{
+        width: 48,
+        height: 48,
+        borderRadius: 12,
+        border: `1px solid ${accentColor}33`,
+        background: `${accentColor}10`,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        overflow: "hidden",
+        flexShrink: 0,
+      }}
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={logoUrl}
+        alt={`${title} logo`}
+        width={32}
+        height={32}
+        style={{ objectFit: "contain" }}
+        onError={(e) => {
+          const target = e.currentTarget as HTMLImageElement;
+          target.style.display = "none";
+          const parent = target.parentElement;
+          if (parent) {
+            parent.innerHTML = `<span style="font-size:20px;font-weight:800;color:${accentColor};font-family:system-ui">${title[0]}</span>`;
+          }
+        }}
+      />
+    </div>
+  );
+}
 
 function ProjectModal({ proj, onClose }: { proj: typeof projects[0]; onClose: () => void }) {
   return (
@@ -134,12 +170,14 @@ function ProjectModal({ proj, onClose }: { proj: typeof projects[0]; onClose: ()
       >
         {/* Header */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 28 }}>
-          <div>
-            <span style={{ fontSize: 44 }}>{proj.emoji}</span>
-            <h2 style={{ fontFamily: "var(--font-display)", fontSize: 28, fontWeight: 800, letterSpacing: "-0.02em", marginTop: 8, marginBottom: 4 }}>
-              {proj.title}
-            </h2>
-            <p style={{ color: proj.accentColor, fontSize: 14, fontWeight: 500 }}>{proj.subtitle}</p>
+          <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+            <ProjectLogo logoUrl={proj.logoUrl} title={proj.title} accentColor={proj.accentColor} />
+            <div>
+              <h2 style={{ fontFamily: "var(--font-display)", fontSize: 28, fontWeight: 800, letterSpacing: "-0.02em", marginBottom: 4 }}>
+                {proj.title}
+              </h2>
+              <p style={{ color: proj.accentColor, fontSize: 14, fontWeight: 500 }}>{proj.subtitle}</p>
+            </div>
           </div>
           <button
             onClick={onClose}
@@ -160,16 +198,16 @@ function ProjectModal({ proj, onClose }: { proj: typeof projects[0]; onClose: ()
           </button>
         </div>
 
-        {/* Status */}
+        {/* Live Status */}
         <span style={{
           display: "inline-flex", alignItems: "center", gap: 6,
           padding: "4px 12px", borderRadius: 999,
-          background: `${proj.statusColor}15`, border: `1px solid ${proj.statusColor}33`,
-          fontFamily: "var(--font-mono)", fontSize: 11, color: proj.statusColor, letterSpacing: "0.07em",
+          background: "#10b98115", border: "1px solid #10b98133",
+          fontFamily: "var(--font-mono)", fontSize: 11, color: "#10b981", letterSpacing: "0.07em",
           marginBottom: 24,
         }}>
-          <span style={{ width: 5, height: 5, borderRadius: "50%", background: proj.statusColor }} />
-          {proj.status}
+          <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#10b981", animation: "pulse-glow 2s infinite" }} />
+          🟢 Live · Production
         </span>
 
         {/* Sections */}
@@ -190,7 +228,7 @@ function ProjectModal({ proj, onClose }: { proj: typeof projects[0]; onClose: ()
         ))}
 
         {/* Tech stack */}
-        <div style={{ marginBottom: 24 }}>
+        <div style={{ marginBottom: 28 }}>
           <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: proj.accentColor, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 10 }}>Tech Stack</div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 7 }}>
             {proj.tech.map((t) => (
@@ -201,17 +239,16 @@ function ProjectModal({ proj, onClose }: { proj: typeof projects[0]; onClose: ()
 
         {/* Actions */}
         <div style={{ display: "flex", gap: 12, paddingTop: 4 }}>
-          <a href={proj.github} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ flex: 1, justifyContent: "center" }}>
+          <a href={proj.demo} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ flex: 1, justifyContent: "center" }}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Visit Website
+          </a>
+          <a href={proj.github} target="_blank" rel="noopener noreferrer" className="btn-ghost" style={{ flex: 1, justifyContent: "center" }}>
             <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" />
             </svg>
-            View on GitHub
+            GitHub
           </a>
-          {proj.demo && (
-            <a href={proj.demo} target="_blank" rel="noopener noreferrer" className="btn-ghost" style={{ flex: 1, justifyContent: "center" }}>
-              Live Demo
-            </a>
-          )}
           <button onClick={onClose} className="btn-ghost" style={{ justifyContent: "center" }}>Close</button>
         </div>
       </motion.div>
@@ -236,11 +273,11 @@ export default function Projects() {
         >
           <div className="section-label">Projects</div>
           <h2 className="section-title">
-            What I've{" "}
+            What I&apos;ve{" "}
             <span className="text-gradient-cyan">Built.</span>
           </h2>
           <p className="section-sub">
-            AI-powered platforms solving real problems across career intelligence, healthcare, handloom commerce, and marine safety.
+            4 live AI-powered platforms solving real problems across career intelligence, healthcare, handloom commerce, and marine safety.
           </p>
         </motion.div>
 
@@ -266,37 +303,42 @@ export default function Projects() {
               >
                 <motion.div
                   className="project-card"
-                  whileHover={{ y: -6, scale: 1.01 }}
+                  whileHover={{ y: -8, scale: 1.015 }}
                   transition={{ duration: 0.3 }}
-                  onClick={() => setSelected(proj)}
                   style={{
                     borderRadius: 20,
                     overflow: "hidden",
-                    cursor: "pointer",
                     height: "100%",
                     background: "linear-gradient(145deg, rgba(255,255,255,0.04) 0%, rgba(0,0,0,0.4) 100%)",
                     border: `1px solid ${proj.accentColor}1a`,
+                    display: "flex",
+                    flexDirection: "column",
                   }}
                 >
                   {/* Top accent line */}
                   <div style={{ height: 2, background: `linear-gradient(90deg, ${proj.accentColor}, transparent)` }} />
 
-                  <div style={{ padding: "26px 26px 22px" }}>
+                  <div style={{ padding: "26px 26px 22px", display: "flex", flexDirection: "column", flex: 1 }}>
                     {/* Header */}
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 18 }}>
-                      <div>
-                        <div style={{ fontSize: 30, marginBottom: 6 }}>{proj.emoji}</div>
-                        <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: proj.accentColor, letterSpacing: "0.12em", textTransform: "uppercase" }}>
-                          {proj.category}
-                        </span>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 16 }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                        <ProjectLogo logoUrl={proj.logoUrl} title={proj.title} accentColor={proj.accentColor} />
+                        <div>
+                          <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: proj.accentColor, letterSpacing: "0.12em", textTransform: "uppercase" }}>
+                            {proj.category}
+                          </span>
+                        </div>
                       </div>
+                      {/* Live badge */}
                       <span style={{
                         display: "flex", alignItems: "center", gap: 5,
                         fontFamily: "var(--font-mono)", fontSize: 10,
-                        color: proj.statusColor, letterSpacing: "0.06em",
+                        color: "#10b981", letterSpacing: "0.06em",
+                        padding: "3px 10px", borderRadius: 999,
+                        background: "rgba(16,185,129,0.1)", border: "1px solid rgba(16,185,129,0.3)",
                       }}>
-                        <span style={{ width: 5, height: 5, borderRadius: "50%", background: proj.statusColor, flexShrink: 0 }} />
-                        {proj.status}
+                        <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#10b981", flexShrink: 0, animation: "pulse-glow 2s infinite" }} />
+                        Live
                       </span>
                     </div>
 
@@ -309,12 +351,12 @@ export default function Projects() {
                     </div>
 
                     {/* Description */}
-                    <p style={{ fontSize: 14, color: "var(--text-muted)", lineHeight: 1.7, marginBottom: 18 }}>
+                    <p style={{ fontSize: 14, color: "var(--text-muted)", lineHeight: 1.7, marginBottom: 16, flex: 1 }}>
                       {proj.description}
                     </p>
 
                     {/* Feature pills */}
-                    <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 18 }}>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 16 }}>
                       {proj.features.map((f) => (
                         <span key={f} style={{
                           padding: "3px 10px", borderRadius: 6, fontSize: 11,
@@ -329,27 +371,43 @@ export default function Projects() {
                     </div>
 
                     {/* Tech tags */}
-                    <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 22 }}>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 20 }}>
                       {proj.tech.slice(0, 5).map((t) => (<span key={t} className="tag">{t}</span>))}
                       {proj.tech.length > 5 && <span className="tag">+{proj.tech.length - 5}</span>}
                     </div>
 
                     {/* Actions */}
-                    <div style={{ display: "flex", gap: 10 }}>
+                    <div style={{ display: "flex", gap: 8 }}>
+                      {/* Visit Website — primary */}
+                      <a
+                        href={proj.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="btn-primary"
+                        style={{ flex: 1, justifyContent: "center", padding: "10px", fontSize: 13, textDecoration: "none" }}
+                        aria-label={`Visit ${proj.title} website`}
+                      >
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        Visit Site
+                      </a>
+                      {/* Details */}
                       <button
                         onClick={(e) => { e.stopPropagation(); setSelected(proj); }}
                         className="btn-ghost"
-                        style={{ flex: 1, justifyContent: "center", padding: "10px", fontSize: 13 }}
+                        style={{ padding: "10px 14px", fontSize: 13 }}
+                        aria-label={`View details for ${proj.title}`}
                       >
-                        View Details
+                        Details
                       </button>
+                      {/* GitHub icon */}
                       <a
                         href={proj.github}
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
                         className="btn-ghost"
-                        style={{ padding: "10px 16px", fontSize: 13 }}
+                        style={{ padding: "10px 12px", fontSize: 13 }}
                         aria-label={`View ${proj.title} on GitHub`}
                       >
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">

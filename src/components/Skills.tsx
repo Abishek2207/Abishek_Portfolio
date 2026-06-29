@@ -27,9 +27,15 @@ const tensorflowSvg = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3
 
 const opencvSvg = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 3.5A6.5 6.5 0 1 1 5.5 12 6.5 6.5 0 0 1 12 5.5z" fill="#5C3EE8"/><path d="M12 8a4 4 0 1 0 4 4 4 4 0 0 0-4-4z" fill="#5C3EE8" opacity="0.6"/></svg>`;
 
-const langchainSvg = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><path d="M8 3h8l3 5-3 5H8L5 8l3-5z" fill="#1C3C3C" stroke="#3ECF8E" strokeWidth="1.5"/><path d="M8 11h8l3 5-3 5H8l-3-5 3-5z" fill="#1C3C3C" stroke="#3ECF8E" strokeWidth="1.5"/></svg>`;
-
 const pandasSvg = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><path d="M9.536 8.221V4.5H7.5v11.714h2.036V8.221zm4.928 0V4.5h2.036v11.714H14.464V8.221zM9.536 19.5v-2.25H7.5V19.5h2.036zm4.928 0v-2.25h2.036V19.5h-2.036z" fill="#150458"/><rect x="9.536" y="10.179" width="4.928" height="3.643" fill="#E70488"/></svg>`;
+
+const figmaSvg = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><path d="M8 24c2.208 0 4-1.792 4-4v-4H8a4 4 0 0 0 0 8z" fill="#0ACF83"/><path d="M4 12a4 4 0 0 1 4-4h4v8H8a4 4 0 0 1-4-4z" fill="#A259FF"/><path d="M4 4a4 4 0 0 1 4-4h4v8H8a4 4 0 0 1-4-4z" fill="#F24E1E"/><path d="M12 0h4a4 4 0 0 1 0 8h-4V0z" fill="#FF7262"/><path d="M20 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0z" fill="#1ABCFE"/></svg>`;
+
+const capcutSvg = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><rect width="24" height="24" rx="6" fill="#000"/><path d="M12 5L7 9v6l5 4 5-4V9l-5-4z" fill="white"/><path d="M12 8l3 2.5v3L12 16l-3-2.5v-3L12 8z" fill="#000"/></svg>`;
+
+const canvaSvg = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0z" fill="#7D2AE8"/><path d="M16.79 14.93c-.26.35-.68.54-1.12.51-.44-.04-.83-.28-1.06-.65l-1.51-2.4-1.7 2.43c-.25.36-.65.58-1.09.59-.44.01-.85-.2-1.12-.55-.52-.68-.38-1.65.3-2.17l2.04-1.56-2.04-1.56c-.68-.52-.82-1.49-.3-2.17.27-.35.68-.56 1.12-.55.44.01.84.23 1.09.59l1.7 2.43 1.51-2.4c.23-.37.62-.61 1.06-.65.44-.04.86.16 1.12.51.52.68.38 1.65-.3 2.17l-2.04 1.56 2.04 1.56c.68.52.82 1.49.3 2.17z" fill="white"/></svg>`;
+
+const adobeSvg = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><path d="M13.966 22.624l-1.69-4.281H8.122l3.892-9.144 5.662 13.425zM8.884 1.376H0v21.248zm15.116 0h-8.884l8.884 21.248z" fill="#FA0F00"/></svg>`;
 
 const skills: {
   category: string;
@@ -49,7 +55,7 @@ const skills: {
   {
     category: "Frameworks",
     color: "#e879f9",
-    items: ["FastAPI", "Next.js", "React", "Tailwind CSS", "Pandas", "NumPy", "Scikit-learn"],
+    items: ["FastAPI", "React", "Next.js", "Tailwind CSS", "Scikit-learn", "OpenCV", "TensorFlow", "NumPy", "Pandas"],
   },
   {
     category: "Databases",
@@ -57,9 +63,9 @@ const skills: {
     items: ["PostgreSQL", "MySQL", "SQLite"],
   },
   {
-    category: "Tools & DevOps",
+    category: "Tools",
     color: "#f59e0b",
-    items: ["Git", "GitHub", "Docker", "VS Code"],
+    items: ["Git", "GitHub", "Docker", "VS Code", "Figma", "CapCut", "Canva", "Adobe Express"],
   },
 ];
 
@@ -75,13 +81,17 @@ const logoItems = [
   { name: "PostgreSQL", svg: pgSvg,         color: "#336791" },
   { name: "TensorFlow", svg: tensorflowSvg, color: "#FF6F00" },
   { name: "OpenCV",     svg: opencvSvg,     color: "#5C3EE8" },
-  { name: "LangChain",  svg: langchainSvg,  color: "#3ECF8E" },
   { name: "Pandas",     svg: pandasSvg,     color: "#E70488" },
+  { name: "Figma",      svg: figmaSvg,      color: "#A259FF" },
+  { name: "Canva",      svg: canvaSvg,      color: "#7D2AE8" },
+  { name: "CapCut",     svg: capcutSvg,     color: "#ffffff" },
+  { name: "Adobe",      svg: adobeSvg,      color: "#FA0F00" },
 ];
 
 export default function Skills() {
   return (
     <section id="skills" className="section" style={{ position: "relative", overflow: "hidden" }}>
+      <Spotlight color="rgba(124,58,237,0.05)" size={600} />
       <div className="ambient-blob" style={{ width: 500, height: 500, background: "var(--accent-cyan)", top: "30%", left: "-15%", opacity: 0.04 }} />
 
       <div className="container">

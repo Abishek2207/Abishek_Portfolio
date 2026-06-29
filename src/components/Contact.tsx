@@ -54,6 +54,17 @@ const socials = [
   },
 ];
 
+const openTo = [
+  { label: "AI Engineer Roles", icon: "🤖", color: "var(--accent-cyan)" },
+  { label: "ML Engineer Roles", icon: "🧠", color: "var(--accent-purple)" },
+  { label: "AI Research Opportunities", icon: "🔬", color: "#e879f9" },
+  { label: "Internships", icon: "💼", color: "#10b981" },
+  { label: "Hackathons", icon: "⚡", color: "#f59e0b" },
+  { label: "Speaking Opportunities", icon: "🎤", color: "var(--accent-cyan)" },
+  { label: "Tech Collaborations", icon: "🤝", color: "var(--accent-purple)" },
+  { label: "Content Collaborations", icon: "🎬", color: "#e879f9" },
+];
+
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
@@ -103,12 +114,60 @@ export default function Contact() {
         >
           <div className="section-label" style={{ justifyContent: "center" }}>Contact</div>
           <h2 className="section-title" style={{ textAlign: "center" }}>
-            Let's{" "}
+            Let&apos;s{" "}
             <span className="text-gradient-cyan">Connect.</span>
           </h2>
           <p className="section-sub" style={{ margin: "0 auto" }}>
-            Open to AI engineering roles, collaborations, and ambitious projects. Let's build something intelligent.
+            Open to AI engineering roles, collaborations, hackathons, and ambitious projects. Let&apos;s build something intelligent.
           </p>
+        </motion.div>
+
+        {/* ── Open To section ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.55 }}
+          style={{ marginBottom: 56 }}
+        >
+          <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--accent-cyan)", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 20, textAlign: "center" }}>
+            // Open To
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 12, justifyContent: "center" }}>
+            {openTo.map((item, i) => (
+              <motion.div
+                key={item.label}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
+                whileHover={{ y: -3, scale: 1.04 }}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 8,
+                  padding: "10px 18px",
+                  borderRadius: 999,
+                  background: `${item.color}0d`,
+                  border: `1px solid ${item.color}33`,
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 13,
+                  color: item.color,
+                  cursor: "default",
+                  transition: "box-shadow 0.2s",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLDivElement).style.boxShadow = `0 0 20px ${item.color}20`;
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLDivElement).style.boxShadow = "none";
+                }}
+              >
+                <span style={{ fontSize: 16 }}>{item.icon}</span>
+                {item.label}
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
 
         <div className="contact-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "start" }}>
@@ -125,7 +184,7 @@ export default function Contact() {
                 Get in Touch
               </h3>
               <p style={{ color: "var(--text-muted)", fontSize: 14, lineHeight: 1.75 }}>
-                Whether you're a recruiter, fellow builder, or potential collaborator — I'd love to hear from you.
+                Whether you&apos;re a recruiter, fellow builder, or potential collaborator — I&apos;d love to hear from you.
               </p>
             </div>
 
@@ -269,7 +328,7 @@ export default function Contact() {
                     </label>
                     <input
                       type="text"
-                      placeholder="What's it about?"
+                      placeholder="What&apos;s it about?"
                       value={form.subject}
                       onChange={(e) => setForm({ ...form, subject: e.target.value })}
                       style={inputStyle}

@@ -6,6 +6,7 @@ import About from "@/components/About";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 import Timeline from "@/components/Timeline";
+import EventCarousel from "@/components/EventCarousel";
 import Contact from "@/components/Contact";
 import CustomCursor from "@/components/CustomCursor";
 import { FloatingDock } from "@/components/ReactBits/FloatingDock";
@@ -95,6 +96,7 @@ export default function Portfolio() {
         <Projects />
         <Skills />
         <Timeline />
+        <EventCarousel />
         <Contact />
       </main>
 
@@ -137,7 +139,7 @@ export default function Portfolio() {
         <div>
           <span>Designed &amp; built by </span>
           <span style={{ color: "var(--accent-cyan)" }}>ABISHEK R</span>
-          <span> · Aspiring AI Engineer · Founder of TulasiAI · 2025</span>
+          <span> · AI Engineer · Founder of TulasiAI · Tech Content Creator · 2025</span>
         </div>
       </footer>
     </>
