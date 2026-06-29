@@ -92,42 +92,6 @@ const projects = [
   },
 ];
 
-function ProjectLogo({ logoUrl, title, accentColor }: { logoUrl: string; title: string; accentColor: string }) {
-  return (
-    <div
-      style={{
-        width: 48,
-        height: 48,
-        borderRadius: 12,
-        border: `1px solid ${accentColor}33`,
-        background: `${accentColor}10`,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        overflow: "hidden",
-        flexShrink: 0,
-      }}
-    >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={logoUrl}
-        alt={`${title} logo`}
-        width={32}
-        height={32}
-        style={{ objectFit: "contain" }}
-        onError={(e) => {
-          const target = e.currentTarget as HTMLImageElement;
-          target.style.display = "none";
-          const parent = target.parentElement;
-          if (parent) {
-            parent.innerHTML = `<span style="font-size:20px;font-weight:800;color:${accentColor};font-family:system-ui">${title[0]}</span>`;
-          }
-        }}
-      />
-    </div>
-  );
-}
-
 function ProjectModal({ proj, onClose }: { proj: typeof projects[0]; onClose: () => void }) {
   return (
     <motion.div
@@ -171,7 +135,6 @@ function ProjectModal({ proj, onClose }: { proj: typeof projects[0]; onClose: ()
         {/* Header */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 28 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-            <ProjectLogo logoUrl={proj.logoUrl} title={proj.title} accentColor={proj.accentColor} />
             <div>
               <h2 style={{ fontFamily: "var(--font-display)", fontSize: 28, fontWeight: 800, letterSpacing: "-0.02em", marginBottom: 4 }}>
                 {proj.title}
@@ -322,7 +285,6 @@ export default function Projects() {
                     {/* Header */}
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 16 }}>
                       <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                        <ProjectLogo logoUrl={proj.logoUrl} title={proj.title} accentColor={proj.accentColor} />
                         <div>
                           <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: proj.accentColor, letterSpacing: "0.12em", textTransform: "uppercase" }}>
                             {proj.category}
