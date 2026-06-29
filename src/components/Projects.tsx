@@ -5,92 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { GlowBorder } from "@/components/ReactBits/GlowBorder";
 import { Spotlight } from "@/components/ReactBits/Spotlight";
 
-const projects = [
-  {
-    id: "tulasiai",
-    title: "TulasiAI",
-    subtitle: "AI Career Intelligence Platform",
-    description: "An AI-powered career intelligence ecosystem for students and professionals. Features AI agents for resume analysis, interview preparation, opportunity discovery, and career guidance — all in one unified platform.",
-    longDescription: "TulasiAI is built on a modern AI stack combining Large Language Models, Retrieval-Augmented Generation (RAG), and autonomous AI Agents. The platform provides personalized career roadmaps, AI-powered resume scoring, mock interview simulations, and real-time job matching. As Founder, I architected the entire system from database schema to LLM prompt pipelines.",
-    problem: "Students and early-career professionals lack personalised, AI-driven guidance for navigating career paths, preparing for interviews, and discovering opportunities aligned to their actual skills.",
-    solution: "A unified platform that uses LLMs + RAG to deliver real-time, context-aware career intelligence — personalised roadmaps, resume scoring, mock interviews, and opportunity matching.",
-    architecture: "Next.js frontend → FastAPI backend → PostgreSQL + pgvector → LLM layer (RAG pipeline) → AI Agents orchestration",
-    lessons: "Learned the importance of chunking strategies in RAG, prompt engineering for structured outputs, and building agent retry loops with fallback strategies.",
-    tech: ["Next.js", "React", "FastAPI", "Python", "PostgreSQL", "LLMs", "RAG", "AI Agents"],
-    category: "Career AI",
-    status: "Live",
-    statusColor: "#10b981",
-    accentColor: "var(--accent-cyan)",
-    glowColor: "rgba(0,212,255,0.12)",
-    logoUrl: "https://tulasiai.in/favicon.ico",
-    github: "https://github.com/Abishek2207",
-    demo: "https://tulasiai.in",
-    features: ["Resume AI Analysis", "Mock Interviews", "Opportunity Discovery", "Career Roadmaps"],
-  },
-  {
-    id: "tulasihealth",
-    title: "TulasiHealth",
-    subtitle: "Unified Healthcare Intelligence Platform",
-    description: "A healthcare interoperability platform bridging AYUSH/NAMASTE and ICD-11 global standards. Enables seamless medical data exchange and intelligent health record management.",
-    longDescription: "TulasiHealth uses NLP and Machine Learning to interpret and translate between traditional Indian healthcare taxonomies (AYUSH, NAMASTE) and the international ICD-11 standard, enabling better health data interoperability across hospitals, clinics, and government systems.",
-    problem: "India's healthcare data exists in fragmented silos — traditional AYUSH systems cannot communicate with modern ICD-11 compliant platforms, causing loss of critical patient history.",
-    solution: "An NLP-powered translation layer that maps AYUSH/NAMASTE health codes to ICD-11 standards, with a unified API for health record exchange.",
-    architecture: "FastAPI REST API → NLP classification pipeline → PostgreSQL health records DB → ICD-11 mapping layer",
-    lessons: "Deep-dived into healthcare ontologies, NLP entity extraction challenges in the medical domain, and the complexity of multi-standard data normalisation.",
-    tech: ["FastAPI", "Python", "PostgreSQL", "NLP", "ML", "Healthcare AI"],
-    category: "Healthcare AI",
-    status: "Live",
-    statusColor: "#10b981",
-    accentColor: "var(--accent-purple)",
-    glowColor: "rgba(124,58,237,0.12)",
-    logoUrl: "https://tulasihealth.vercel.app/favicon.ico",
-    github: "https://github.com/Abishek2207",
-    demo: "https://tulasihealth.vercel.app/",
-    features: ["AYUSH-ICD11 Bridge", "NLP Parsing", "Health Data API", "Medical Intelligence"],
-  },
-  {
-    id: "weavetales",
-    title: "WeaveTales AI",
-    subtitle: "AI Powered Handloom Discovery Platform",
-    description: "A computer vision-based handloom discovery and virtual try-on platform that connects artisans with global buyers, preserving India's handloom heritage through AI.",
-    longDescription: "WeaveTales AI uses Computer Vision for pattern recognition, fabric texture analysis, and virtual try-on technology to create an immersive handloom commerce experience. The platform supports artisan discovery, authentic product certification, and direct commerce — helping preserve India's handloom heritage.",
-    problem: "Indian handloom artisans lack digital reach. Buyers cannot discover authentic products, and the heritage is dying due to lack of market access.",
-    solution: "A CV-powered platform that digitises handloom patterns, enables visual search, and provides a virtual try-on experience — bridging artisans and global buyers.",
-    architecture: "React frontend → FastAPI backend → Computer Vision pattern recognition → Product catalogue DB → Virtual try-on engine",
-    lessons: "Gained expertise in texture-based feature extraction with CV models, building visual similarity search, and handling diverse lighting conditions in product photography.",
-    tech: ["Computer Vision", "React", "FastAPI", "Python", "Machine Learning"],
-    category: "Computer Vision",
-    status: "Live",
-    statusColor: "#10b981",
-    accentColor: "#e879f9",
-    glowColor: "rgba(232,121,249,0.12)",
-    logoUrl: "https://weavetalesai.vercel.app/favicon.ico",
-    github: "https://github.com/Abishek2207",
-    demo: "https://weavetalesai.vercel.app/",
-    features: ["Virtual Try-On", "Pattern Recognition", "Artisan Discovery", "Commerce Platform"],
-  },
-  {
-    id: "oceanguard",
-    title: "OceanGuard AI",
-    subtitle: "Marine Risk Detection Platform",
-    description: "An AI-powered maritime intelligence platform for detecting dark fishing risks, monitoring illegal fishing activities, and providing real-time marine threat intelligence.",
-    longDescription: "OceanGuard AI combines Geospatial AI, Computer Vision, and satellite-derived data analysis to identify suspicious maritime patterns, track vessels in restricted zones, and generate risk intelligence reports for marine authorities and environmental organisations.",
-    problem: "Illegal dark fishing costs the global economy billions annually and devastates marine ecosystems. Existing monitoring is manual, slow, and unable to process the volume of satellite data available.",
-    solution: "An AI platform that analyses AIS vessel data and satellite imagery to automatically detect dark fishing patterns, restricted-zone violations, and generate actionable risk intelligence.",
-    architecture: "React dashboard → FastAPI backend → Deep Learning (vessel pattern ML) → Satellite data ingestion → Risk scoring engine",
-    lessons: "Learned large-scale data processing, anomaly detection on time-series vessel trajectories, and building real-time alerting pipelines.",
-    tech: ["Computer Vision", "Deep Learning", "FastAPI", "Python", "React"],
-    category: "Geospatial AI",
-    status: "Live",
-    statusColor: "#10b981",
-    accentColor: "#10b981",
-    glowColor: "rgba(16,185,129,0.12)",
-    logoUrl: "https://oceanguardai.vercel.app/favicon.ico",
-    github: "https://github.com/Abishek2207",
-    demo: "https://oceanguardai.vercel.app/",
-    features: ["Dark Fishing Detection", "Vessel Tracking", "Risk Scoring", "Marine Intelligence"],
-  },
-];
+import Link from "next/link";
+import { projects } from "@/data/projects";
 
 function ProjectModal({ proj, onClose }: { proj: typeof projects[0]; onClose: () => void }) {
   return (
@@ -354,14 +270,14 @@ export default function Projects() {
                         Visit Site
                       </a>
                       {/* Details */}
-                      <button
-                        onClick={(e) => { e.stopPropagation(); setSelected(proj); }}
+                      <Link
+                        href={`/projects/${proj.id}`}
                         className="btn-ghost"
-                        style={{ padding: "10px 14px", fontSize: 13 }}
+                        style={{ padding: "10px 14px", fontSize: 13, textDecoration: "none" }}
                         aria-label={`View details for ${proj.title}`}
                       >
                         Details
-                      </button>
+                      </Link>
                       {/* GitHub icon */}
                       <a
                         href={proj.github}
