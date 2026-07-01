@@ -156,7 +156,7 @@ export default function Projects() {
             <span className="text-gradient-cyan">Built.</span>
           </h2>
           <p className="section-sub">
-            4 live AI-powered platforms solving real problems across career intelligence, healthcare, handloom commerce, and marine safety.
+            Production AI systems spanning career intelligence, multi-agent automation, machine learning, generative AI, and marine safety.
           </p>
         </motion.div>
 
