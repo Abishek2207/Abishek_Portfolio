@@ -6,7 +6,7 @@ export default function Skills() {
   const categories = [
     {
       title: "Artificial Intelligence",
-      skills: ["Machine Learning", "Deep Learning", "Computer Vision", "NLP", "Generative AI", "LLMs", "RAG", "AI Agents", "Prompt Engineering"]
+      skills: ["Machine Learning", "Deep Learning", "Computer Vision", "NLP", "Generative AI", "LLMs", "RAG", "AI Agents", "Prompt Engineering", "Multi-Agent Systems", "AI Workflow Automation"]
     },
     {
       title: "Programming",
@@ -14,7 +14,7 @@ export default function Skills() {
     },
     {
       title: "Frameworks",
-      skills: ["FastAPI", "React", "Next.js", "Tailwind CSS", "TensorFlow", "Scikit-learn", "OpenCV", "Pandas", "NumPy"]
+      skills: ["FastAPI", "React", "Next.js", "Tailwind CSS", "TensorFlow", "Scikit-learn", "OpenCV", "Pandas", "NumPy", "OpenClaw", "Hermes Agent"]
     },
     {
       title: "Databases",
@@ -22,7 +22,7 @@ export default function Skills() {
     },
     {
       title: "Developer Tools",
-      skills: ["Git", "GitHub", "Docker", "VS Code", "Figma", "Canva", "Adobe Express", "CapCut"]
+      skills: ["Git", "GitHub", "Docker", "VS Code", "Figma", "Canva", "CapCut", "Adobe Express"]
     }
   ];
 

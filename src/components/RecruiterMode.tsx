@@ -163,7 +163,7 @@ export default function RecruiterMode() {
                 Abishek R
               </h3>
               <p style={{ color: "var(--accent-cyan)", fontWeight: 500, marginBottom: 4 }}>
-                AI Engineer · Founder of TulasiAI · AIML Student
+                AI Engineer · Founder & CEO of TulasiAI · AIML Student
               </p>
               <p style={{ color: "var(--text-muted)", fontSize: 14 }}>
                 Panimalar Engineering College, Chennai · B.Tech AIML (2024–Present)
@@ -197,7 +197,7 @@ export default function RecruiterMode() {
               borderLeft: "3px solid var(--accent-cyan)",
               paddingLeft: 20,
             }}>
-              Abishek R is an AI/ML engineering student at Panimalar Engineering College and the Founder of TulasiAI — a production-ready AI career intelligence platform. He has built 4 AI-powered products across career tech, healthcare, handloom commerce, and marine safety using LLMs, RAG, AI Agents, Computer Vision, and Geospatial AI. He has competed in national-level hackathons (SIH winner, Handloom National Finalist) and global events (NASA Space Apps, USAII Top 25%, Google Big Code). He is seeking AI Engineering roles where he can build production AI systems that create real-world impact.
+              Abishek R is a B.Tech AI & ML student at Panimalar Engineering College, Chennai, and the Founder & CEO of TulasiAI. He has built 4 deployed AI products spanning Career Intelligence, Healthcare, Computer Vision, and Geospatial Intelligence — using LLMs, RAG, AI Agents, FastAPI, and React. He is a Finalist at the USAII Global AI Hackathon 2026, a National Finalist at the Handloom Hackathon, and a participant in NASA Space Apps Challenge and the RightsX Summit. He is actively seeking AI Engineering roles to build production AI systems that create real-world impact.
             </p>
           </div>
 

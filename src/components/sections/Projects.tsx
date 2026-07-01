@@ -13,7 +13,7 @@ export default function Projects() {
       logo: "/tulasiai-logo.png", // User to replace with actual logo
       description: "AI Career Intelligence Platform built for students and professionals featuring Resume Intelligence, AI Interview Assistant, Career Roadmaps, Opportunity Discovery and AI Agents.",
       techStack: ["Next.js", "Python", "FastAPI", "PostgreSQL", "LangChain"],
-      status: "Live",
+      status: "🟢 LIVE",
       github: "https://github.com/Abishek2207",
       demo: "https://tulasiai.in",
     },
@@ -22,7 +22,7 @@ export default function Projects() {
       logo: "/tulasihealth-logo.png", // User to replace with actual logo
       description: "Healthcare interoperability platform powered by AI supporting medical intelligence, NLP and structured healthcare data.",
       techStack: ["React", "FastAPI", "NLP", "Machine Learning"],
-      status: "Live",
+      status: "🟢 LIVE",
       github: "https://github.com/Abishek2207",
       demo: "https://tulasihealth.vercel.app",
     },
@@ -31,7 +31,7 @@ export default function Projects() {
       logo: "/weavetales-logo.png", // User to replace with actual logo
       description: "Computer Vision powered handloom discovery platform with intelligent artisan search and virtual try-on.",
       techStack: ["React", "Node.js", "Computer Vision", "TensorFlow"],
-      status: "Live",
+      status: "🟢 LIVE",
       github: "https://github.com/Abishek2207",
       demo: "https://weavetalesai.vercel.app",
     },
@@ -40,7 +40,7 @@ export default function Projects() {
       logo: "/oceanguard-logo.png", // User to replace with actual logo
       description: "Marine intelligence platform for vessel monitoring, dark fishing detection and maritime risk prediction.",
       techStack: ["PyTorch", "OpenCV", "Docker", "Machine Learning"],
-      status: "Live",
+      status: "🟢 LIVE",
       github: "https://github.com/Abishek2207",
       demo: "https://oceanguardai.vercel.app",
     },

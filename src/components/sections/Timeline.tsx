@@ -5,26 +5,25 @@ import { FadeUp, ScrollReveal } from "@/components/ui/Animations";
 export default function Timeline() {
   const timelineData = [
     {
-      year: "2025",
+      year: "2026",
       events: [
-        { title: "Launch of OceanGuard AI", role: "Founder" },
-        { title: "Launch of WeaveTales AI", role: "Founder" },
-        { title: "Launch of TulasiHealth", role: "Founder" },
-        { title: "Launch of TulasiAI", role: "Founder" },
-        { title: "Founder of TulasiAI", role: "Startup" },
+        { title: "TulasiAI", role: "Founder & CEO" },
+        { title: "TulasiAI Platform Launched", role: "Launched" },
+        { title: "TulasiHealth Platform Launched", role: "Launched" },
+        { title: "WeaveTales AI Platform Launched", role: "Launched" },
+        { title: "OceanGuard AI Platform Launched", role: "Launched" },
         { title: "USAII Global AI Hackathon", role: "Finalist" },
-        { title: "Amazon ML Summer School", role: "Shortlisted" },
-        { title: "RightsX Summit", role: "Approved Delegate" },
-        { title: "Future Ready AI Summit", role: "Participant" },
-        { title: "NASA Space Apps Challenge", role: "Participant" },
-        { title: "Handloom Hackathon", role: "National Finalist" },
-        { title: "TANSAM Centre of Excellence", role: "AI & ML Internship" },
+        { title: "Forage Job Simulations Completed", role: "Completed" },
       ]
     },
     {
-      year: "2024",
+      year: "2025",
       events: [
-        { title: "Panimalar Engineering College", role: "Started B.Tech AIML" }
+        { title: "Handloom Hackathon", role: "National Finalist" },
+        { title: "TANSAM Centre of Excellence", role: "AI & ML Internship" },
+        { title: "NASA Space Apps Challenge", role: "Participant" },
+        { title: "Future Ready AI Summit", role: "Participant" },
+        { title: "RightsX Summit", role: "Approved Delegate" },
       ]
     }
   ];

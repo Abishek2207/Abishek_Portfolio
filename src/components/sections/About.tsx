@@ -19,10 +19,11 @@ export default function About() {
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6">
               My Journey
             </h2>
-            <p className="text-lg text-[#A1A1AA] max-w-2xl mx-auto mb-16">
-              From writing my first lines of code to building production-grade AI
-              systems, my journey has been driven by a singular focus: using
-              artificial intelligence to solve meaningful problems.
+            <p className="text-lg text-[#A1A1AA] max-w-2xl mx-auto mb-16 space-y-4">
+              <span>I'm Abishek R, a B.Tech Artificial Intelligence and Machine Learning student at Panimalar Engineering College, Chennai, and the Founder & CEO of TulasiAI.</span><br /><br />
+              <span>I build production-ready AI applications across Career Intelligence, Healthcare, Computer Vision, and Geospatial Intelligence.</span><br /><br />
+              <span>My work focuses on Large Language Models (LLMs), Retrieval-Augmented Generation (RAG), AI Agents, FastAPI, React, Next.js, PostgreSQL, and scalable AI infrastructure.</span><br /><br />
+              <span>I actively participate in national and international hackathons, continuously learn emerging AI technologies, and create technical content to share my journey with the developer community.</span>
             </p>
 
             <div className="relative">

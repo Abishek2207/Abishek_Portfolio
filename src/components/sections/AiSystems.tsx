@@ -5,14 +5,14 @@ import { CheckCircle2 } from "lucide-react";
 
 export default function AiSystems() {
   const experiences = [
-    "Designed and deployed multiple AI Agent workflows.",
-    "Built autonomous Multi-Agent architectures.",
-    "Worked with OpenClaw.",
-    "Integrated Hermes Agent workflows.",
-    "Developed AI orchestration pipelines.",
-    "Built production-ready AI applications.",
-    "Worked with LLM powered automation.",
-    "Designed intelligent agent collaboration systems."
+    "Built multiple production-ready AI applications.",
+    "Designed autonomous Multi-Agent AI workflows.",
+    "Experience integrating OpenClaw agent workflows.",
+    "Experience using Hermes Agent orchestration.",
+    "Built Retrieval-Augmented Generation (RAG) pipelines.",
+    "Developed LLM-powered backend systems.",
+    "Built scalable AI APIs using FastAPI.",
+    "Experience deploying full-stack AI applications."
   ];
 
   return (

@@ -63,7 +63,7 @@ export default function Hero() {
 
         <FadeUp delay={0.2}>
           <div className="flex flex-wrap justify-center gap-2 mb-6">
-            {["AI Engineer", "Founder @ TulasiAI", "Tech Content Creator", "AI Builder"].map((tag, i) => (
+            {["AI Engineer", "Founder & CEO — TulasiAI", "Tech Content Creator"].map((tag, i) => (
               <span key={i} className="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs font-medium text-[#A1A1AA]">
                 {tag}
               </span>
@@ -76,7 +76,7 @@ export default function Hero() {
             ABISHEK R
           </h1>
           <p className="text-xl md:text-2xl text-[#A1A1AA] font-light leading-relaxed max-w-3xl mx-auto">
-            Building AI products that solve real-world problems using <span className="text-white font-medium">LLMs, Computer Vision, AI Agents</span>, and modern AI infrastructure.
+            Building production-ready AI systems using <span className="text-white font-medium">Large Language Models (LLMs), AI Agents, Computer Vision</span>, and modern AI technologies to solve real-world problems.
           </p>
         </FadeUp>
 

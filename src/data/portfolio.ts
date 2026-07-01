@@ -1,7 +1,7 @@
 export const portfolioData = {
   personal: {
     name: "Abishek R",
-    title: "Aspiring AI Engineer & Founder of TulasiAI",
+    title: "AI Engineer | Founder & CEO, TulasiAI | Tech Content Creator",
     email: "abishekramamoorthy22@gmail.com",
     phone: "+91 6369538345",
     github: "github.com/Abishek2207",
@@ -17,7 +17,7 @@ export const portfolioData = {
   ],
   experience: [
     {
-      role: "Founder & AI Developer",
+      role: "Founder & CEO",
       company: "TulasiAI",
       duration: "04/2026 — Present",
       description: "Built and deployed an AI-powered career intelligence platform for students and professionals.",
@@ -48,12 +48,12 @@ export const portfolioData = {
     },
   ],
   achievements: [
-    "RightsX Summit Delegate - Palais Wilson, Geneva (Dec 2025)",
-    "Handloom Hackathon 2025 - National Finalist (IIT Delhi)",
+    "USAII Global AI Hackathon 2026 - Finalist",
+    "Handloom Hackathon 2025 - National Finalist",
     "NASA Space Apps Challenge 2025 - Participant",
-    "SIH 2k25 - Intra-College Winning Team",
-    "USAII Global AI Hackathon 2026 Qualifier - Top 25% (Rank 107/424)",
-    "Elite World Records - Participant, simultaneous coloring event (2020)",
+    "RightsX Summit 2025 - Approved Delegate",
+    "Future Ready AI Summit - Participant",
+    "Forage Job Simulations Completed",
   ],
   certifications: [
     "AI Engineer Core Track (LLMs)",
@@ -61,8 +61,8 @@ export const portfolioData = {
   ],
   skills: {
     languages: ["Python", "Java", "SQL", "C"],
-    ai_ml: ["Machine Learning", "Deep Learning", "Computer Vision", "NLP", "Gen AI", "LLM", "RAG", "AI Agents"],
-    frameworks: ["FastAPI", "Next.js", "React", "Tailwind CSS", "Pandas", "NumPy", "Scikit-learn"],
+    ai_ml: ["Machine Learning", "Deep Learning", "Computer Vision", "NLP", "Gen AI", "LLM", "RAG", "AI Agents", "Prompt Engineering", "Multi-Agent Systems", "AI Workflow Automation"],
+    frameworks: ["FastAPI", "Next.js", "React", "Tailwind CSS", "Pandas", "NumPy", "Scikit-learn", "OpenClaw", "Hermes Agent"],
     databases: ["PostgreSQL", "MySQL", "SQLite"],
   },
 };

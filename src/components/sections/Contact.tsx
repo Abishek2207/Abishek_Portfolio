@@ -7,9 +7,15 @@ import { motion } from "framer-motion";
 
 export default function Contact() {
   const openTo = [
-    "AI Engineer Roles", "Machine Learning Engineer", "AI Research", 
-    "Internships", "Hackathons", "Open Source", 
-    "Startup Collaborations", "Tech Talks", "Content Collaborations"
+    "AI Engineer Roles",
+    "Machine Learning Engineer Roles",
+    "Applied AI Roles",
+    "Software Engineering Roles",
+    "Research Collaborations",
+    "Startup Collaborations",
+    "Hackathons",
+    "Technical Speaking",
+    "Content Creation Partnerships"
   ];
 
   return (
