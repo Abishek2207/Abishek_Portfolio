@@ -14,7 +14,7 @@ const eventPhotos = [
   { src: "/rightxsummit_event.png", title: "RightsX Summit - Geneva" },
   { src: "/united_nation.png", title: "RightsX Summit - UN Human Rights" },
   { src: "/tansam intenship.png", title: "TANSAM Centre of Excellence Internship" },
-  { src: "/forge2qualifier2.png", title: "USAII Global AI Hackathon" },
+  { src: "/USAII%20Finalist.png", title: "USAII Global AI Hackathon Finalist" },
   { src: "/panimalar_event.png", title: "SIH 2k25 Intra-College Winners" },
   { src: "/Screenshot_2025-12-07-19-21-00-604_com.google.android.gm.jpg", title: "RightsX Summit Selection" },
   { src: "/Screenshot_2025-07-31-19-27-55-856_us.zoom.videomeetings.jpg", title: "Hackathon Presentation" },

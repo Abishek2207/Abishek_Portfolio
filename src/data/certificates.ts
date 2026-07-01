@@ -4,15 +4,16 @@ export const certificates = [
     title: "USAII Global AI Hackathon",
     issuer: "USAII",
     date: "2026",
-    credentialUrl: "/forge2qualifierproof.png",
+    credentialUrl: "/USAII%20Finalist.png",
     description: "Ranked in the top 25% globally (107 out of 424 teams) and reached the finals. Certified as Global Finalist.",
     color: "#e879f9",
     glow: "rgba(232,121,249,0.2)",
     icon: "🏆",
-    image: "/forge2qualifierproof.png",
+    image: "/USAII%20Finalist.png",
     pdf: "",
     category: "Hackathon",
   },
+
   {
     id: "amazon-ml-summer-school",
     title: "Amazon ML Summer School Selection",
