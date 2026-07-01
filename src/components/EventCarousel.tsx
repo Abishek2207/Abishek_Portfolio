@@ -75,8 +75,7 @@ export default function EventCarousel() {
                 border: "1px solid var(--border-subtle)",
                 flexShrink: 0,
                 position: "relative",
-                background: "#000",
-                group: "true"
+                background: "#000"
               }}
               className="carousel-item-group"
             >
