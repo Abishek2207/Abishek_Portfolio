@@ -7,15 +7,15 @@ import { motion } from "framer-motion";
 
 export default function Contact() {
   const openTo = [
-    "AI Engineer Roles",
-    "Machine Learning Engineer Roles",
-    "Applied AI Roles",
-    "Software Engineering Roles",
+    "AI Engineer",
+    "Machine Learning Engineer",
+    "Applied AI Engineer",
+    "Software Engineer",
     "Research Collaborations",
     "Startup Collaborations",
     "Hackathons",
     "Technical Speaking",
-    "Content Creation Partnerships"
+    "Content Creation"
   ];
 
   return (
@@ -31,7 +31,7 @@ export default function Contact() {
 
           <div className="flex flex-wrap items-center justify-center gap-4 mb-16">
             <motion.a
-              href="mailto:contact@abishek.com"
+              href="mailto:abishekramamoorthy22@gmail.com"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="flex items-center gap-2 bg-white text-black px-8 py-4 rounded-full font-semibold transition-colors hover:bg-gray-200 shadow-[0_0_30px_rgba(255,255,255,0.2)]"
@@ -40,7 +40,7 @@ export default function Contact() {
               Email Me
             </motion.a>
             <motion.a
-              href="https://linkedin.com/in/abishek2207"
+              href="https://linkedin.com/in/abishekr22"
               target="_blank"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

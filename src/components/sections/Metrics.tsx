@@ -5,8 +5,8 @@ import { FadeUp } from "@/components/ui/Animations";
 export default function Metrics() {
   const metrics = [
     { label: "Live AI Products", value: "4", highlight: true },
-    { label: "USAII Global AI Hackathon", value: "Finalist (2026)", highlight: false },
-    { label: "Current CGPA", value: "7.87", highlight: true },
+    { label: "Finalist", value: "USAII Global AI Hackathon 2026", highlight: false },
+    { label: "Latest Verified CGPA", value: "7.87", highlight: true },
     { label: "AI Domains", value: "4", highlight: false },
   ];
 

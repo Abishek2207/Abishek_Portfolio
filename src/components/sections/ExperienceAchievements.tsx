@@ -6,25 +6,34 @@ import { Briefcase, Trophy } from "lucide-react";
 export default function ExperienceAchievements() {
   const experiences = [
     {
-      role: "Founder",
+      role: "Founder & CEO",
       company: "TulasiAI",
-      date: "2024 - Present",
-      description: "Building autonomous AI systems for healthcare and professional intelligence. Orchestrating multi-agent architectures and LLM workflows.",
+      date: "2026 - Present",
+      description: "Founded and developed TulasiAI. Designed and deployed autonomous AI workflows, multi-agent architectures, and LLM-powered features.",
     },
     {
-      role: "AI Intern",
-      company: "Tech Solutions",
-      date: "2023 - 2024",
-      description: "Developed and optimized machine learning models for computer vision applications. Improved inference speed by 30%.",
+      role: "AI & ML Intern",
+      company: "TANSAM Centre of Excellence",
+      date: "2025",
+      description: "Applied Python, machine learning, and data analytics to analyze large-scale datasets and extract insights.",
     },
   ];
 
   const achievements = [
-    "🏆 3× International Hackathon Finalist",
-    "🚀 4+ Hackathons Participated",
-    "🤖 Built Multi-Agent AI System",
-    "💼 Founder of TulasiAI",
-    "🌏 National Level Finalist",
+    "✔ Founder & CEO of TulasiAI",
+    "✔ Built and deployed TulasiAI",
+    "✔ Built and deployed TulasiHealth",
+    "✔ Built and deployed WeaveTales AI",
+    "✔ Built and deployed OceanGuard AI",
+    "✔ AI & ML Internship at TANSAM Centre of Excellence",
+    "✔ National Finalist — Handloom Hackathon",
+    "✔ USAII Global AI Hackathon 2026 — Finalist",
+    "✔ NASA Space Apps Challenge — Participant",
+    "✔ Future Ready AI Summit — Participant",
+    "✔ RightsX Summit — Approved Delegate",
+    "✔ Completed Forage Job Simulation Programs",
+    "✔ Building multiple AI products",
+    "✔ Tech Content Creator",
   ];
 
   return (

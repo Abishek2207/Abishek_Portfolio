@@ -10,36 +10,36 @@ export default function Projects() {
   const projects = [
     {
       title: "TulasiAI",
-      logo: "/tulasiai-logo.png", // User to replace with actual logo
-      description: "AI Career Intelligence Platform built for students and professionals featuring Resume Intelligence, AI Interview Assistant, Career Roadmaps, Opportunity Discovery and AI Agents.",
-      techStack: ["Next.js", "Python", "FastAPI", "PostgreSQL", "LangChain"],
+      logo: "/tulasiai-logo.png",
+      description: "An AI-powered career intelligence ecosystem that addresses the lack of personalized guidance for students and professionals. Utilizing Large Language Models (LLMs), autonomous AI Agents, and Retrieval-Augmented Generation (RAG), the platform delivers real-time, context-aware career roadmaps, mock interview simulations, and resume analysis to solve practical career planning problems.",
+      techStack: ["Next.js", "FastAPI", "Python", "PostgreSQL", "LLMs", "RAG", "AI Agents"],
       status: "🟢 LIVE",
       github: "https://github.com/Abishek2207",
       demo: "https://tulasiai.in",
     },
     {
       title: "TulasiHealth",
-      logo: "/tulasihealth-logo.png", // User to replace with actual logo
-      description: "Healthcare interoperability platform powered by AI supporting medical intelligence, NLP and structured healthcare data.",
-      techStack: ["React", "FastAPI", "NLP", "Machine Learning"],
+      logo: "/tulasihealth-logo.png",
+      description: "A healthcare interoperability platform that bridges legacy systems and standardizes patient data format exchange. Leveraging Natural Language Processing (NLP) and machine learning models, it streamlines clinical text processing, resolves medical terminology, and acts as a production-ready medical intelligence system.",
+      techStack: ["React", "FastAPI", "Python", "NLP", "Machine Learning"],
       status: "🟢 LIVE",
       github: "https://github.com/Abishek2207",
       demo: "https://tulasihealth.vercel.app",
     },
     {
       title: "WeaveTales AI",
-      logo: "/weavetales-logo.png", // User to replace with actual logo
-      description: "Computer Vision powered handloom discovery platform with intelligent artisan search and virtual try-on.",
-      techStack: ["React", "Node.js", "Computer Vision", "TensorFlow"],
+      logo: "/weavetales-logo.png",
+      description: "An AI-powered handloom discovery and virtual try-on platform resolving visibility issues and search friction for traditional weavers. By integrating Computer Vision pipelines, TensorFlow, and FastAPI, it facilitates real-time virtual try-ons and intelligent search interfaces for physical textile assets.",
+      techStack: ["React", "FastAPI", "Python", "Computer Vision", "TensorFlow"],
       status: "🟢 LIVE",
       github: "https://github.com/Abishek2207",
       demo: "https://weavetalesai.vercel.app",
     },
     {
       title: "OceanGuard AI",
-      logo: "/oceanguard-logo.png", // User to replace with actual logo
-      description: "Marine intelligence platform for vessel monitoring, dark fishing detection and maritime risk prediction.",
-      techStack: ["PyTorch", "OpenCV", "Docker", "Machine Learning"],
+      logo: "/oceanguard-logo.png",
+      description: "A maritime intelligence platform designed to address illegal dark fishing and restricted zone violations. Leveraging Geospatial AI, Deep Learning, and vessel pattern prediction, the platform ingests satellite imagery and vessel data to automatically detect suspicious maritime behavior in real-time.",
+      techStack: ["React", "FastAPI", "Python", "Computer Vision", "Deep Learning"],
       status: "🟢 LIVE",
       github: "https://github.com/Abishek2207",
       demo: "https://oceanguardai.vercel.app",

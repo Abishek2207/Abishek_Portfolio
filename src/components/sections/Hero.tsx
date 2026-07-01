@@ -76,7 +76,7 @@ export default function Hero() {
             ABISHEK R
           </h1>
           <p className="text-xl md:text-2xl text-[#A1A1AA] font-light leading-relaxed max-w-3xl mx-auto">
-            Building production-ready AI systems using <span className="text-white font-medium">Large Language Models (LLMs), AI Agents, Computer Vision</span>, and modern AI technologies to solve real-world problems.
+            Building production-ready AI systems using <span className="text-white font-medium">Large Language Models, AI Agents, Computer Vision</span>, and scalable AI technologies.
           </p>
         </FadeUp>
 
