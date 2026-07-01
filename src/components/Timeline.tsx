@@ -58,8 +58,8 @@ const timelineEvents = [
   {
     year: "2025",
     title: "SIH 2k25",
-    org: "Intra-College Winning Team",
-    description: "Won the Smart India Hackathon (SIH) 2025 intra-college level, developing innovative solutions under intense time constraints.",
+    org: "Intra-College Participant",
+    description: "Participated in the Smart India Hackathon (SIH) 2025 intra-college round, developing innovative solutions under intense time constraints.",
     type: "achievement",
     color: "#10b981",
     image: "",

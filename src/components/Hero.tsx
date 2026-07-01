@@ -95,7 +95,7 @@ export default function Hero() {
                     animation: "pulse-glow 2s infinite",
                   }}
                 />
-                Open to Opportunities · 2025
+                Open to Opportunities · 2026
               </span>
             </motion.div>
 
@@ -397,8 +397,8 @@ export default function Hero() {
             >
               {[
                 { value: "4", label: "Live AI Products" },
-                { value: "8+", label: "Hackathons" },
-                { value: "Multiple", label: "Finalist" },
+                { value: "Multiple", label: "Hackathons" },
+                { value: "Finalist", label: "USAII · Handloom" },
               ].map((stat, i) => (
                 <div key={stat.label} style={{ textAlign: "center" }}>
                   <div

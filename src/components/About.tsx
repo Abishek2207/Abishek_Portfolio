@@ -7,9 +7,9 @@ import { Spotlight } from "@/components/ReactBits/Spotlight";
 
 const stats = [
   { value: "4", label: "Live AI Products", color: "var(--accent-cyan)" },
-  { value: "8+", label: "Hackathons Participated", color: "var(--accent-purple)" },
+  { value: "Multiple", label: "Hackathons Participated", color: "var(--accent-purple)" },
   { value: "4", label: "AI Domains", color: "#e879f9" },
-  { value: "Multiple", label: "Hackathon Finalist", color: "#10b981" },
+  { value: "Finalist", label: "USAII · Handloom HK", color: "#10b981" },
 ];
 
 const highlights = [

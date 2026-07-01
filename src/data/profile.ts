@@ -7,5 +7,5 @@ export const profile = {
   github: "https://github.com/Abishek2207",
   linkedin: "https://linkedin.com/in/abishekr22",
   leetcode: "https://leetcode.com/u/fOtjANkHIG",
-  availability: "Available for Opportunities · 2025",
+  availability: "Available for Opportunities · 2026",
 };
