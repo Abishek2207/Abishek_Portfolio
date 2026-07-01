@@ -1,35 +1,36 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
-import CustomCursor from "@/components/ui/CustomCursor";
 
 export const metadata: Metadata = {
-  title: "Abishek R — AI Engineer & Founder",
+  title: "Abishek R — Aspiring AI Engineer & Founder of TulasiAI",
   description:
-    "AI Engineer & Founder of TulasiAI. Building intelligent systems that solve real problems.",
+    "Abishek R is an Aspiring AI Engineer, B.Tech AIML student at Panimalar Engineering College, and Founder of TulasiAI — building intelligent systems across career intelligence, healthcare, handloom commerce, and marine risk detection.",
   keywords: [
     "Abishek R",
-    "AI Engineer",
+    "Aspiring AI Engineer",
     "TulasiAI",
     "Machine Learning",
-    "Multi-Agent Systems",
+    "Panimalar Engineering College",
     "LLMs",
     "RAG",
     "AI Agents",
+    "FastAPI",
+    "Next.js",
+    "Computer Vision",
+    "LangChain",
   ],
   authors: [{ name: "Abishek R", url: "https://github.com/Abishek2207" }],
   creator: "Abishek R",
   openGraph: {
-    title: "Abishek R — AI Engineer & Founder",
-    description: "Building AI Systems That Solve Real Problems.",
+    title: "Abishek R — Aspiring AI Engineer & Founder of TulasiAI",
+    description: "Building intelligent systems that solve real-world problems.",
     type: "website",
     locale: "en_IN",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Abishek R — AI Engineer",
-    description: "AI Engineer & Founder of TulasiAI. Building production-grade AI systems.",
+    title: "Abishek R — Aspiring AI Engineer",
+    description: "B.Tech AIML student & Founder of TulasiAI. Building production-grade AI systems.",
   },
   robots: {
     index: true,
@@ -44,19 +45,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <meta name="theme-color" content="#08090A" />
+        <meta name="theme-color" content="#030303" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      <body>
-        <div className="aurora-bg"></div>
-        <div className="noise-overlay"></div>
-        <CustomCursor />
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+      <body
+        style={{
+          background: "#030303",
+          color: "#ffffff",
+          minHeight: "100vh",
+          overflowX: "hidden",
+        }}
+      >
+        {children}
       </body>
     </html>
   );

@@ -1,74 +1,202 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { TiltCard } from "@/components/ReactBits/TiltCard";
+import { BlurTextReveal } from "@/components/ReactBits/BlurTextReveal";
+import { Spotlight } from "@/components/ReactBits/Spotlight";
 
-const storyTimeline = [
-  { year: "2024", title: "Started AIML Journey", description: "Began pursuing B.Tech in Artificial Intelligence and Machine Learning at Panimalar Engineering College." },
-  { year: "2024", title: "Built ML Projects", description: "Developed initial machine learning models and computer vision pipelines, focusing on practical applications." },
-  { year: "2025", title: "AI Internship", description: "Completed an Artificial Intelligence & Machine Learning internship at TANSAM Center of Excellence." },
-  { year: "2025", title: "Hackathons", description: "Participated in NASA Space Apps and reached the National Finals of the Handloom Hackathon at IIT Delhi." },
-  { year: "2025", title: "Founder of TulasiAI", description: "Founded an AI career intelligence platform powered by LLMs, RAG, and autonomous AI agents." },
-  { year: "2026", title: "Building AI Agents", description: "Ranked Top 25% globally in the USAII Global AI Hackathon and focusing on multi-agent AI systems." },
+const stats = [
+  { value: "4", label: "Live AI Products", color: "var(--accent-cyan)" },
+  { value: "8+", label: "Hackathons Participated", color: "var(--accent-purple)" },
+  { value: "4", label: "AI Domains", color: "#e879f9" },
+  { value: "Multiple", label: "Hackathon Finalist", color: "#10b981" },
 ];
+
+const highlights = [
+  { icon: "🎓", label: "Education", value: "B.Tech AIML · Panimalar Engineering College" },
+  { icon: "🚀", label: "Role", value: "Founder · TulasiAI" },
+  { icon: "🎬", label: "Also", value: "Tech Content Creator" },
+  { icon: "📍", label: "Location", value: "Chennai, Tamil Nadu, India" },
+  { icon: "✉️", label: "Email", value: "abishekramamoorthy22@gmail.com", href: "mailto:abishekramamoorthy22@gmail.com" },
+];
+
+const tags = ["LLMs", "RAG", "AI Agents", "Computer Vision", "FastAPI", "Next.js", "PostgreSQL", "Python"];
 
 export default function About() {
   return (
-    <section id="about" style={{ padding: "120px 24px", position: "relative" }}>
-      <div className="section-container" style={{ padding: 0, maxWidth: "800px" }}>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <h2 style={{ fontSize: "clamp(32px, 5vw, 48px)", fontWeight: 800, marginBottom: 16 }}>
-            Who I Am
-          </h2>
-          <p style={{ fontSize: 18, color: "var(--text-secondary)", marginBottom: 64, lineHeight: 1.6 }}>
-            My journey from learning the fundamentals of machine learning to architecting production-ready AI products.
-          </p>
-        </motion.div>
+    <section id="about" className="section" style={{ background: "rgba(0,0,0,0.3)", position: "relative" }}>
+      <Spotlight color="rgba(124,58,237,0.07)" size={600} />
 
-        <div style={{ position: "relative" }}>
-          {/* Timeline connecting line */}
-          <div style={{ position: "absolute", left: 15, top: 20, bottom: 20, width: 2, background: "linear-gradient(to bottom, transparent, var(--border-medium) 10%, var(--border-medium) 90%, transparent)" }} />
+      <div className="ambient-blob" style={{ width: 400, height: 400, background: "var(--accent-purple)", top: "20%", right: "-10%", opacity: 0.06 }} />
 
-          <div style={{ display: "flex", flexDirection: "column", gap: 40 }}>
-            {storyTimeline.map((item, index) => (
-              <motion.div 
-                key={index}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                style={{ display: "flex", gap: 32, position: "relative", zIndex: 1 }}
+      <div className="container">
+        <div className="about-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "start" }}>
+
+          {/* ── LEFT ── */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.65 }}
+          >
+            <div className="section-label">About Me</div>
+            <h2 className="section-title" style={{ marginBottom: 24 }}>
+              Building AI that
+              <br />
+              <span className="text-gradient-cyan">matters.</span>
+            </h2>
+
+            <BlurTextReveal
+              text="I am Abishek R — a B.Tech Artificial Intelligence & Machine Learning student at Panimalar Engineering College, Chennai, and the Founder of TulasiAI."
+              delay={0.05}
+              className=""
+              style={{ color: "var(--text-secondary)", lineHeight: 1.85, marginBottom: 18, fontSize: 15 }}
+            />
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.55, delay: 0.3 }}
+              style={{ color: "var(--text-secondary)", lineHeight: 1.85, marginBottom: 18, fontSize: 15 }}
+            >
+              I am also a Tech Content Creator passionate about building AI products that solve real-world problems.
+              I build production-ready AI systems using LLMs, RAG, Computer Vision, AI Agents, FastAPI, React, Next.js and Python.
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.55, delay: 0.4 }}
+              style={{ color: "var(--text-secondary)", lineHeight: 1.85, marginBottom: 18, fontSize: 15 }}
+            >
+              <span style={{ color: "var(--accent-cyan)", fontWeight: 600 }}>Mission: </span>
+              Build intelligent software that improves education, healthcare, commerce and environmental sustainability.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+              style={{ display: "flex", flexWrap: "wrap", gap: 8 }}
+            >
+              {tags.map((t) => (
+                <span key={t} className="tag">{t}</span>
+              ))}
+            </motion.div>
+          </motion.div>
+
+          {/* ── RIGHT ── */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.65, delay: 0.1 }}
+          >
+            {/* Stats grid */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginBottom: 20 }}>
+              {stats.map((s, i) => (
+                <TiltCard key={s.label} maxTilt={8} scale={1.03}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.12 + i * 0.08 }}
+                    style={{
+                      padding: "22px 20px",
+                      background: "linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(0,0,0,0.3) 100%)",
+                      backdropFilter: "blur(20px)",
+                      border: `1px solid ${s.color}22`,
+                      borderRadius: 16,
+                      cursor: "default",
+                    }}
+                  >
+                    <div
+                      style={{
+                        fontFamily: "var(--font-display)",
+                        fontSize: "clamp(28px, 4vw, 40px)",
+                        fontWeight: 800,
+                        letterSpacing: "-0.03em",
+                        background: `linear-gradient(135deg, ${s.color}, #fff)`,
+                        WebkitBackgroundClip: "text",
+                        WebkitTextFillColor: "transparent",
+                        backgroundClip: "text",
+                        marginBottom: 4,
+                      }}
+                    >
+                      {s.value}
+                    </div>
+                    <div style={{ fontSize: 12, color: "var(--text-muted)", fontFamily: "var(--font-mono)", letterSpacing: "0.03em" }}>
+                      {s.label}
+                    </div>
+                  </motion.div>
+                </TiltCard>
+              ))}
+            </div>
+
+            {/* Info card */}
+            <TiltCard maxTilt={5} scale={1.01}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.55 }}
+                style={{
+                  padding: 24,
+                  background: "rgba(255,255,255,0.03)",
+                  backdropFilter: "blur(24px)",
+                  border: "1px solid rgba(255,255,255,0.07)",
+                  borderRadius: 20,
+                  cursor: "default",
+                }}
               >
-                {/* Node */}
-                <div style={{ 
-                  width: 32, height: 32, borderRadius: "50%", 
-                  background: "var(--bg-base)", border: "2px solid var(--text-secondary)", 
-                  display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
-                  marginTop: 4
-                }}>
-                  <div style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--text-primary)" }} />
+                <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--accent-cyan)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 18 }}>
+                  // profile.info
                 </div>
-                
-                {/* Content */}
-                <div>
-                  <div style={{ color: "var(--text-muted)", fontSize: 13, fontFamily: "var(--font-mono)", marginBottom: 4 }}>
-                    {item.year}
+                {highlights.map((item, i) => (
+                  <div
+                    key={item.label}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 12,
+                      padding: "11px 0",
+                      borderBottom: i < highlights.length - 1 ? "1px solid var(--border-subtle)" : "none",
+                    }}
+                  >
+                    <span style={{ fontSize: 16, flexShrink: 0 }}>{item.icon}</span>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--text-muted)", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 2 }}>
+                        {item.label}
+                      </div>
+                      {item.href ? (
+                        <a
+                          href={item.href}
+                          style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: "var(--accent-cyan)", textDecoration: "none", wordBreak: "break-all" }}
+                        >
+                          {item.value}
+                        </a>
+                      ) : (
+                        <span style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: "var(--text-secondary)" }}>
+                          {item.value}
+                        </span>
+                      )}
+                    </div>
                   </div>
-                  <h3 style={{ fontSize: 20, fontWeight: 700, marginBottom: 8, color: "var(--text-primary)" }}>
-                    {item.title}
-                  </h3>
-                  <p style={{ color: "var(--text-secondary)", fontSize: 15, lineHeight: 1.6 }}>
-                    {item.description}
-                  </p>
-                </div>
+                ))}
               </motion.div>
-            ))}
-          </div>
+            </TiltCard>
+          </motion.div>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .about-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+        }
+      `}</style>
     </section>
   );
 }

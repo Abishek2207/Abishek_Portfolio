@@ -1,186 +1,473 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { MagneticButton } from "@/components/ReactBits/MagneticButton";
+import { GradientText } from "@/components/ReactBits/GradientText";
+import { Spotlight } from "@/components/ReactBits/Spotlight";
+
+const ROLES = ["AI Engineer", "Founder @ TulasiAI", "Tech Content Creator"];
 
 export default function Hero() {
   return (
-    <section id="hero" style={{ 
-      position: "relative", 
-      padding: "160px 24px 80px", 
-      minHeight: "100vh",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      overflow: "hidden"
-    }}>
-      {/* Background Gradient Mesh */}
-      <div style={{
-        position: "absolute",
-        top: "-10%", left: "50%", transform: "translateX(-50%)",
-        width: "800px", height: "800px",
-        background: "radial-gradient(circle, rgba(108,92,231,0.08) 0%, rgba(9,9,11,0) 70%)",
-        zIndex: 0, pointerEvents: "none"
-      }} />
+    <section
+      id="hero"
+      style={{
+        minHeight: "100vh",
+        paddingTop: "var(--nav-height)",
+        position: "relative",
+        display: "flex",
+        alignItems: "center",
+        overflow: "hidden",
+        background: "#030303",
+      }}
+    >
+      {/* Spotlight cursor effect */}
+      <Spotlight color="rgba(0,212,255,0.07)" size={700} />
 
-      <div className="section-container" style={{ padding: 0, zIndex: 1, position: "relative", width: "100%" }}>
-        
-        <div style={{ 
-          display: "grid", 
-          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", 
-          gap: "64px", 
-          alignItems: "center",
-          marginBottom: "80px"
-        }}>
-          
-          {/* LEFT COLUMN */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div style={{ 
-              display: "inline-flex", alignItems: "center", gap: 8, 
-              padding: "6px 12px", borderRadius: "99px", 
-              background: "rgba(16, 185, 129, 0.1)", border: "1px solid rgba(16, 185, 129, 0.2)", 
-              marginBottom: 24, fontSize: 12, fontWeight: 600, color: "var(--accent-green)", letterSpacing: "0.05em" 
-            }}>
-              <span style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--accent-green)", boxShadow: "0 0 8px var(--accent-green)" }} />
-              OPEN TO AI ENGINEERING OPPORTUNITIES
-            </div>
+      {/* Ambient blobs */}
+      <div
+        className="ambient-blob"
+        style={{ width: 700, height: 700, background: "var(--accent-cyan)", top: -250, left: -200, opacity: 0.06 }}
+      />
+      <div
+        className="ambient-blob"
+        style={{ width: 500, height: 500, background: "var(--accent-purple)", bottom: -150, right: -150, opacity: 0.08 }}
+      />
 
-            <h1 style={{ marginBottom: 16 }}>
-              ABISHEK R
-            </h1>
-            
-            <h2 style={{ fontSize: "clamp(24px, 3vw, 32px)", color: "var(--text-secondary)", marginBottom: 24, fontWeight: 500, letterSpacing: "-0.02em" }}>
-              AI Engineer <br/>
-              Founder @ TulasiAI <br/>
-              <span className="gradient-text-accent" style={{ fontWeight: 600 }}>Building AI Products that Solve Real Problems.</span>
-            </h2>
+      {/* Grid lines overlay */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          inset: 0,
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)",
+          backgroundSize: "80px 80px",
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      />
 
-            <p style={{ fontSize: 16, lineHeight: 1.7, color: "var(--text-secondary)", marginBottom: 40, maxWidth: 540 }}>
-              B.Tech Artificial Intelligence & Machine Learning student passionate about Generative AI, AI Agents, Machine Learning and Full Stack Engineering. I enjoy building products that combine intelligence, design and user experience.
-            </p>
-
-            <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
-              <a href="#projects" className="btn-primary">
-                View Projects 
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
-              <a href="/Abishek.pdf" target="_blank" className="btn-secondary">
-                Download Resume
-              </a>
-            </div>
-          </motion.div>
-
-          {/* RIGHT COLUMN */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            style={{ position: "relative", display: "flex", flexDirection: "column", alignItems: "center" }}
-          >
-            <div style={{ position: "relative", width: "100%", maxWidth: "380px" }}>
-              {/* Abstract mesh behind portrait */}
-              <div style={{
-                position: "absolute",
-                top: "50%", left: "50%", transform: "translate(-50%, -50%)",
-                width: "120%", height: "120%",
-                background: "radial-gradient(circle, rgba(108,92,231,0.15) 0%, rgba(0,210,255,0.05) 50%, transparent 70%)",
-                filter: "blur(40px)",
-                zIndex: 0
-              }} />
-              
-              {/* Portrait Image */}
-              <div style={{
-                position: "relative",
-                zIndex: 1,
-                width: "100%",
-                aspectRatio: "3/4",
-                borderRadius: "var(--radius-xl)",
-                background: "var(--bg-elevated)",
-                border: "1px solid var(--border-medium)",
-                overflow: "hidden",
-                boxShadow: "0 24px 64px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1)",
-                transform: "translateY(-10px)"
-              }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img 
-                  src="/abishekphoto.jpg" 
-                  alt="Abishek R" 
-                  style={{ width: "100%", height: "100%", objectFit: "cover", filter: "contrast(1.05) brightness(0.95)" }} 
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = "/abishekphoto.png"; // Fallback
-                  }}
-                />
-              </div>
-
-              {/* Quick Info Card */}
-              <div className="glass-card" style={{
-                position: "absolute",
-                bottom: "-20px",
-                right: "-20px",
-                zIndex: 2,
-                padding: "20px",
-                width: "calc(100% - 40px)",
-                background: "rgba(18,18,20,0.8)",
-                boxShadow: "0 20px 40px rgba(0,0,0,0.5)"
-              }}>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", fontSize: "13px" }}>
-                  <div>
-                    <div style={{ color: "var(--text-muted)", marginBottom: 4, textTransform: "uppercase", letterSpacing: "0.05em", fontSize: 11 }}>Experience</div>
-                    <div style={{ color: "var(--text-primary)", fontWeight: 500 }}>AI Engineer<br/>Founder<br/>Tech Creator</div>
-                  </div>
-                  <div>
-                    <div style={{ color: "var(--text-muted)", marginBottom: 4, textTransform: "uppercase", letterSpacing: "0.05em", fontSize: 11 }}>Location</div>
-                    <div style={{ color: "var(--text-primary)", fontWeight: 500, marginBottom: 12 }}>India</div>
-                    <div style={{ color: "var(--text-muted)", marginBottom: 4, textTransform: "uppercase", letterSpacing: "0.05em", fontSize: 11 }}>Available For</div>
-                    <div style={{ color: "var(--text-primary)", fontWeight: 500 }}>Internships & AI Roles</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* HERO METRICS */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+      <div className="container" style={{ position: "relative", zIndex: 1, width: "100%" }}>
+        <div
+          className="hero-grid"
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-            gap: "24px",
-            marginTop: "60px"
+            gridTemplateColumns: "1fr 1fr",
+            gap: 60,
+            alignItems: "center",
+            minHeight: "calc(100vh - var(--nav-height))",
+            padding: "60px 0",
           }}
         >
-          {[
-            { value: "4+", label: "Hackathons Participated" },
-            { value: "3", label: "International Hackathon Finalist" },
-            { value: "1", label: "Multi-Agent AI System Built" },
-            { value: "Live", label: "AI Products Deployed" }
-          ].map((metric, i) => (
-            <div key={i} style={{
-              padding: "24px",
-              background: "transparent",
-              borderLeft: "1px solid var(--border-medium)",
+          {/* ── LEFT ── */}
+          <div>
+            {/* Status badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              style={{ marginBottom: 28 }}
+            >
+              <span
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 8,
+                  padding: "6px 16px",
+                  borderRadius: 999,
+                  border: "1px solid rgba(0,212,255,0.25)",
+                  background: "rgba(0,212,255,0.05)",
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 11,
+                  letterSpacing: "0.12em",
+                  color: "var(--accent-cyan)",
+                  textTransform: "uppercase",
+                }}
+              >
+                <span
+                  style={{
+                    width: 6,
+                    height: 6,
+                    borderRadius: "50%",
+                    background: "var(--accent-cyan)",
+                    boxShadow: "0 0 8px var(--accent-cyan)",
+                    animation: "pulse-glow 2s infinite",
+                  }}
+                />
+                Open to Opportunities · 2025
+              </span>
+            </motion.div>
+
+            {/* Name */}
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.1 }}
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "clamp(54px, 8vw, 100px)",
+                fontWeight: 800,
+                letterSpacing: "-0.04em",
+                lineHeight: 0.93,
+                marginBottom: 24,
+              }}
+            >
+              <GradientText from="#ffffff" via="rgba(255,255,255,0.9)" to="#00d4ff">
+                ABISHEK
+                <br />
+                R.
+              </GradientText>
+            </motion.h1>
+
+            {/* Role titles */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.22 }}
+              style={{ marginBottom: 24, display: "flex", flexDirection: "column", gap: 6 }}
+            >
+              {ROLES.map((role, i) => (
+                <motion.div
+                  key={role}
+                  initial={{ opacity: 0, x: -16 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.45, delay: 0.3 + i * 0.1 }}
+                  style={{ display: "flex", alignItems: "center", gap: 10 }}
+                >
+                  <span
+                    style={{
+                      width: 4,
+                      height: 4,
+                      borderRadius: "50%",
+                      background: i === 0 ? "var(--accent-cyan)" : i === 1 ? "var(--accent-purple)" : "#e879f9",
+                      boxShadow: `0 0 6px ${i === 0 ? "var(--accent-cyan)" : i === 1 ? "var(--accent-purple)" : "#e879f9"}`,
+                      flexShrink: 0,
+                    }}
+                  />
+                  <span
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      fontSize: "clamp(15px, 2vw, 20px)",
+                      fontWeight: 600,
+                      color: i === 0 ? "var(--accent-cyan)" : i === 1 ? "rgba(200,180,255,0.9)" : "#e879f9",
+                      letterSpacing: "-0.01em",
+                    }}
+                  >
+                    {role}
+                  </span>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Description */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.45 }}
+              style={{
+                fontSize: 15,
+                color: "var(--text-muted)",
+                lineHeight: 1.8,
+                maxWidth: 440,
+                marginBottom: 40,
+              }}
+            >
+              B.Tech AIML student at Panimalar Engineering College, Chennai.
+              Building production-ready AI systems using{" "}
+              <span style={{ color: "var(--accent-cyan)" }}>LLMs, RAG, Computer Vision & AI Agents</span>{" "}
+              that solve real-world problems.
+            </motion.p>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.55 }}
+              style={{ display: "flex", flexWrap: "wrap", gap: 12, marginBottom: 48 }}
+            >
+              <MagneticButton href="#projects" className="btn-primary" id="view-projects-btn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <rect x="3" y="3" width="7" height="7" rx="1" />
+                  <rect x="14" y="3" width="7" height="7" rx="1" />
+                  <rect x="3" y="14" width="7" height="7" rx="1" />
+                  <rect x="14" y="14" width="7" height="7" rx="1" />
+                </svg>
+                View Projects
+              </MagneticButton>
+
+              <MagneticButton
+                href="/Abishek.pdf"
+                download
+                className="btn-ghost"
+                id="download-resume-btn"
+              >
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
+                </svg>
+                Resume
+              </MagneticButton>
+
+              <MagneticButton href="#contact" className="btn-purple" id="contact-btn">
+                Let&apos;s Talk
+              </MagneticButton>
+            </motion.div>
+
+            {/* Social links */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.55, delay: 0.7 }}
+              style={{ display: "flex", gap: 20, flexWrap: "wrap" }}
+            >
+              {[
+                { label: "GitHub", href: "https://github.com/Abishek2207", abbr: "GH" },
+                { label: "LinkedIn", href: "https://linkedin.com/in/abishekr22", abbr: "LI" },
+                { label: "LeetCode", href: "https://leetcode.com/u/fOtjANkHIG", abbr: "LC" },
+              ].map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 7,
+                    fontFamily: "var(--font-mono)",
+                    fontSize: 12,
+                    color: "var(--text-muted)",
+                    textDecoration: "none",
+                    transition: "color 0.2s",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent-cyan)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-muted)")}
+                >
+                  <span
+                    style={{
+                      width: 28,
+                      height: 28,
+                      borderRadius: 8,
+                      border: "1px solid var(--border-subtle)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: 10,
+                      fontWeight: 700,
+                      background: "var(--bg-card)",
+                    }}
+                  >
+                    {s.abbr}
+                  </span>
+                  {s.label}
+                </a>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* ── RIGHT — Profile Photo ── */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.88 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
+            style={{
               display: "flex",
               flexDirection: "column",
-              gap: 8
-            }}>
-              <div style={{ fontSize: "36px", fontWeight: 700, fontFamily: "var(--font-display)", color: "var(--text-primary)", letterSpacing: "-0.02em" }}>
-                {metric.value}
-              </div>
-              <div style={{ fontSize: "14px", color: "var(--text-secondary)", lineHeight: 1.4 }}>
-                {metric.label}
-              </div>
-            </div>
-          ))}
-        </motion.div>
+              alignItems: "center",
+              gap: 28,
+              position: "relative",
+            }}
+          >
+            {/* Outer ambient glow */}
+            <div
+              aria-hidden
+              style={{
+                position: "absolute",
+                width: 420,
+                height: 420,
+                borderRadius: "50%",
+                background:
+                  "radial-gradient(circle, rgba(0,212,255,0.14) 0%, rgba(124,58,237,0.08) 40%, transparent 70%)",
+                filter: "blur(40px)",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -60%)",
+                pointerEvents: "none",
+              }}
+            />
 
+            {/* Profile photo container */}
+            <div style={{ position: "relative", animation: "float 5s ease-in-out infinite" }}>
+              {/* Rotating gradient ring */}
+              <div
+                aria-hidden
+                style={{
+                  position: "absolute",
+                  inset: -4,
+                  borderRadius: "50%",
+                  background: "conic-gradient(from 0deg, var(--accent-cyan), var(--accent-purple), #e879f9, var(--accent-cyan))",
+                  animation: "spin-slow 6s linear infinite",
+                  zIndex: 0,
+                }}
+              />
+              {/* White gap ring */}
+              <div
+                aria-hidden
+                style={{
+                  position: "absolute",
+                  inset: -1,
+                  borderRadius: "50%",
+                  background: "#030303",
+                  zIndex: 1,
+                }}
+              />
+              {/* Photo */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/abishekphoto.jpg"
+                alt="Abishek R — AI Engineer, Founder of TulasiAI"
+                style={{
+                  width: 300,
+                  height: 300,
+                  borderRadius: "50%",
+                  objectFit: "cover",
+                  objectPosition: "top center",
+                  display: "block",
+                  position: "relative",
+                  zIndex: 2,
+                }}
+              />
+              {/* Inner glow overlay */}
+              <div
+                aria-hidden
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  borderRadius: "50%",
+                  boxShadow: "inset 0 0 40px rgba(0,212,255,0.08)",
+                  zIndex: 3,
+                  pointerEvents: "none",
+                }}
+              />
+            </div>
+
+            {/* Role chips */}
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap", justifyContent: "center" }}>
+              {[
+                { label: "AI Engineer", color: "var(--accent-cyan)", bg: "rgba(0,212,255,0.08)", border: "rgba(0,212,255,0.25)" },
+                { label: "Founder · TulasiAI", color: "rgba(200,180,255,0.9)", bg: "rgba(124,58,237,0.08)", border: "rgba(124,58,237,0.25)" },
+                { label: "Tech Content Creator", color: "#e879f9", bg: "rgba(232,121,249,0.08)", border: "rgba(232,121,249,0.25)" },
+              ].map((chip, i) => (
+                <motion.span
+                  key={chip.label}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.75 + i * 0.1 }}
+                  style={{
+                    padding: "5px 14px",
+                    borderRadius: 999,
+                    fontFamily: "var(--font-mono)",
+                    fontSize: 11,
+                    letterSpacing: "0.06em",
+                    background: chip.bg,
+                    border: `1px solid ${chip.border}`,
+                    color: chip.color,
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {chip.label}
+                </motion.span>
+              ))}
+            </div>
+
+            {/* Mini stat strip */}
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.05 }}
+              style={{
+                display: "flex",
+                gap: 20,
+                padding: "14px 24px",
+                background: "rgba(255,255,255,0.03)",
+                backdropFilter: "blur(16px)",
+                border: "1px solid rgba(255,255,255,0.08)",
+                borderRadius: 16,
+              }}
+            >
+              {[
+                { value: "4", label: "Live AI Products" },
+                { value: "8+", label: "Hackathons" },
+                { value: "Multiple", label: "Finalist" },
+              ].map((stat, i) => (
+                <div key={stat.label} style={{ textAlign: "center" }}>
+                  <div
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      fontSize: 20,
+                      fontWeight: 800,
+                      letterSpacing: "-0.02em",
+                      color: i === 0 ? "var(--accent-cyan)" : i === 1 ? "#e879f9" : "#10b981",
+                    }}
+                  >
+                    {stat.value}
+                  </div>
+                  <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, color: "var(--text-muted)", letterSpacing: "0.06em", textTransform: "uppercase" }}>
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </div>
       </div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.4 }}
+        style={{
+          position: "absolute",
+          bottom: 32,
+          left: "50%",
+          transform: "translateX(-50%)",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: 8,
+          fontFamily: "var(--font-mono)",
+          fontSize: 10,
+          letterSpacing: "0.15em",
+          color: "var(--text-muted)",
+          textTransform: "uppercase",
+        }}
+      >
+        <span>Scroll</span>
+        <div
+          style={{
+            width: 1,
+            height: 48,
+            background: "linear-gradient(180deg, var(--accent-cyan), transparent)",
+            animation: "pulse-glow 2s infinite",
+          }}
+        />
+      </motion.div>
+
+      <style>{`
+        @keyframes spin-slow {
+          from { transform: rotate(0deg); }
+          to   { transform: rotate(360deg); }
+        }
+        @media (max-width: 768px) {
+          .hero-grid {
+            grid-template-columns: 1fr !important;
+            text-align: center;
+          }
+          .hero-grid > div:last-child { order: -1; }
+          .hero-grid > div:last-child img { width: 220px !important; height: 220px !important; }
+        }
+      `}</style>
     </section>
   );
 }
