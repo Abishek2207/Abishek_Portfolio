@@ -6,6 +6,7 @@ import About from "@/components/About";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 import Timeline from "@/components/Timeline";
+import Achievements from "@/components/Achievements";
 import EventCarousel from "@/components/EventCarousel";
 import Certificates from "@/components/Certificates";
 import Contact from "@/components/Contact";
@@ -64,6 +65,16 @@ const dockItems = [
     ),
   },
   {
+    id: "achievements",
+    label: "Achievements",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M12 15l-3 3v4l3-2 3 2v-4l-3-3z" />
+        <circle cx="12" cy="8" r="6" />
+      </svg>
+    ),
+  },
+  {
     id: "certificates",
     label: "Certificates",
     icon: (
@@ -107,6 +118,7 @@ export default function Portfolio() {
         <Projects />
         <Skills />
         <Timeline />
+        <Achievements />
         <EventCarousel />
         <Certificates />
         <Contact />
@@ -151,7 +163,7 @@ export default function Portfolio() {
         <div>
           <span>Designed &amp; built by </span>
           <span style={{ color: "var(--accent-cyan)" }}>ABISHEK R</span>
-          <span> · AI Engineer · Founder of TulasiAI · Tech Content Creator · 2025</span>
+          <span> · AI Engineer · Founder of TulasiAI · 2026</span>
         </div>
       </footer>
     </>

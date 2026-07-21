@@ -14,13 +14,13 @@ const stats = [
 
 const highlights = [
   { icon: "🎓", label: "Education", value: "B.Tech AIML · Panimalar Engineering College" },
-  { icon: "🚀", label: "Role", value: "Founder · TulasiAI" },
-  { icon: "🎬", label: "Also", value: "Tech Content Creator" },
+  { icon: "🚀", label: "Role", value: "AI Engineer & Founder @ TulasiAI" },
+  { icon: "💼", label: "Experience", value: "AI/ML Intern & Product Builder" },
   { icon: "📍", label: "Location", value: "Chennai, Tamil Nadu, India" },
   { icon: "✉️", label: "Email", value: "abishekramamoorthy22@gmail.com", href: "mailto:abishekramamoorthy22@gmail.com" },
 ];
 
-const tags = ["LLMs", "RAG", "AI Agents", "Computer Vision", "FastAPI", "Next.js", "PostgreSQL", "Python"];
+const tags = ["AI Engineer", "Founder", "Internship", "Product Builder", "Hackathons", "AI Research Interest"];
 
 export default function About() {
   return (
@@ -60,7 +60,7 @@ export default function About() {
               transition={{ duration: 0.55, delay: 0.3 }}
               style={{ color: "var(--text-secondary)", lineHeight: 1.85, marginBottom: 18, fontSize: 15 }}
             >
-              I am also a Tech Content Creator passionate about building AI products that solve real-world problems.
+              I am passionate about building AI products that solve real-world problems.
               I build production-ready AI systems using LLMs, RAG, Computer Vision, AI Agents, FastAPI, React, Next.js and Python.
             </motion.p>
 
@@ -72,7 +72,7 @@ export default function About() {
               style={{ color: "var(--text-secondary)", lineHeight: 1.85, marginBottom: 18, fontSize: 15 }}
             >
               <span style={{ color: "var(--accent-cyan)", fontWeight: 600 }}>Mission: </span>
-              Build intelligent software that improves education, healthcare, commerce and environmental sustainability.
+              Build AI products that create real-world impact in education, healthcare and industry.
             </motion.p>
 
             <motion.div

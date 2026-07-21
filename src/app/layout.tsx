@@ -21,21 +21,33 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Abishek R", url: "https://github.com/Abishek2207" }],
   creator: "Abishek R",
+
+  // ✅ Google Search Console Verification
+  verification: {
+    google: "mkWSHb7cUf1HC2KipfoSv-TzT9SqaXFpZgYdmUXHJ7A",
+  },
+
   openGraph: {
     title: "Abishek R — Aspiring AI Engineer & Founder of TulasiAI",
     description: "Building intelligent systems that solve real-world problems.",
     type: "website",
     locale: "en_IN",
   },
+
   twitter: {
     card: "summary_large_image",
     title: "Abishek R — Aspiring AI Engineer",
-    description: "B.Tech AIML student & Founder of TulasiAI. Building production-grade AI systems.",
+    description:
+      "B.Tech AIML student & Founder of TulasiAI. Building production-grade AI systems.",
   },
+
   robots: {
     index: true,
     follow: true,
-    googleBot: { index: true, follow: true },
+    googleBot: {
+      index: true,
+      follow: true,
+    },
   },
 };
 
@@ -48,7 +60,11 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
         <meta name="theme-color" content="#030303" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
