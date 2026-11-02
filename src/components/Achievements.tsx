@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Spotlight } from "@/components/ReactBits/Spotlight";
 
 const achievements = [
   {
@@ -72,129 +73,178 @@ const achievements = [
 
 export default function Achievements() {
   return (
-    <section id="achievements" className="section">
-      {/* Ambient */}
-      <div className="ambient-blob" style={{
-        width: 400, height: 400,
-        background: "var(--accent-cyan)",
-        top: "5%", right: "-10%",
-        opacity: 0.06,
-      }} />
+    <section id="achievements" className="section" style={{ position: "relative", overflow: "hidden" }}>
+      <Spotlight color="rgba(232,121,249,0.06)" size={650} />
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          top: "10%",
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: 600,
+          height: 400,
+          background: "radial-gradient(circle, rgba(0,212,255,0.06) 0%, transparent 70%)",
+          filter: "blur(70px)",
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      />
 
-      <div className="container">
+      <div className="container" style={{ position: "relative", zIndex: 1 }}>
+        {/* Centered Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          style={{ marginBottom: 64 }}
+          transition={{ duration: 0.6 }}
+          style={{ marginBottom: 64, textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}
         >
-          <div className="section-label">Achievements</div>
-          <h2 className="section-title">
+          <div className="section-label" style={{ justifyContent: "center" }}>
+            <span
+              style={{
+                width: 6,
+                height: 6,
+                borderRadius: "50%",
+                background: "var(--accent-pink)",
+                boxShadow: "0 0 8px var(--accent-pink)",
+              }}
+            />
+            Achievements
+          </div>
+          <h2 className="section-title" style={{ textAlign: "center", maxWidth: 800 }}>
             Recognition &{" "}
             <span className="text-gradient-cyan">Impact.</span>
           </h2>
-          <p className="section-sub">
+          <p className="section-sub" style={{ textAlign: "center", margin: "0 auto", maxWidth: 680 }}>
             Competing at national and global levels — from NASA to Google to Government of India initiatives.
           </p>
         </motion.div>
 
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-          gap: 20,
-        }}>
+        {/* Centered Bento Grid for Achievements */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+            gap: 22,
+          }}
+        >
           {achievements.map((ach, i) => (
             <motion.div
               key={ach.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
+              transition={{ delay: i * 0.08, duration: 0.5 }}
               style={{
                 position: "relative",
-                background: `linear-gradient(135deg, ${ach.glow}, rgba(0,0,0,0.3))`,
+                background: "linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(12,12,16,0.6) 100%)",
+                backdropFilter: "blur(24px)",
                 border: `1px solid ${ach.border}`,
-                borderRadius: 20,
-                padding: "28px 28px 24px",
+                borderRadius: 22,
+                padding: "30px 28px 26px",
                 overflow: "hidden",
-                transition: "all 0.4s ease",
+                boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
+                transition: "transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease",
               }}
               whileHover={{
                 y: -6,
-                boxShadow: `0 20px 60px ${ach.glow}`,
+                boxShadow: `0 20px 50px ${ach.glow}, 0 0 25px ${ach.glow}`,
+                borderColor: ach.badgeColor,
               }}
             >
-              {/* Shimmer effect */}
-              <div style={{
-                position: "absolute",
-                inset: 0,
-                background: "linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.03) 50%, transparent 60%)",
-                pointerEvents: "none",
-              }} />
+              {/* Top delicate specular line */}
+              <div style={{ position: "absolute", top: 0, left: "20%", right: "20%", height: 1, background: `linear-gradient(90deg, transparent, ${ach.badgeColor}88, transparent)` }} />
 
               {/* Header */}
-              <div style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "flex-start",
-                marginBottom: 16,
-              }}>
-                <span style={{ fontSize: 32 }}>{ach.icon}</span>
-                <span style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: 10,
-                  fontWeight: 700,
-                  letterSpacing: "0.1em",
-                  padding: "3px 10px",
-                  borderRadius: 999,
-                  background: `${ach.badgeColor}18`,
-                  border: `1px solid ${ach.badgeColor}44`,
-                  color: ach.badgeColor,
-                }}>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  marginBottom: 18,
+                }}
+              >
+                <div
+                  style={{
+                    width: 44,
+                    height: 44,
+                    borderRadius: 12,
+                    background: `${ach.badgeColor}15`,
+                    border: `1px solid ${ach.badgeColor}33`,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: 22,
+                  }}
+                >
+                  {ach.icon}
+                </div>
+                <span
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: 10,
+                    fontWeight: 700,
+                    letterSpacing: "0.1em",
+                    padding: "4px 12px",
+                    borderRadius: 999,
+                    background: `${ach.badgeColor}18`,
+                    border: `1px solid ${ach.badgeColor}44`,
+                    color: ach.badgeColor,
+                  }}
+                >
                   {ach.badge}
                 </span>
               </div>
 
               {/* Title */}
-              <h3 style={{
-                fontFamily: "var(--font-display)",
-                fontSize: "clamp(15px, 2vw, 18px)",
-                fontWeight: 700,
-                letterSpacing: "-0.01em",
-                color: "#fff",
-                marginBottom: 6,
-                lineHeight: 1.3,
-              }}>
+              <h3
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "clamp(17px, 2vw, 20px)",
+                  fontWeight: 700,
+                  letterSpacing: "-0.01em",
+                  color: "#fff",
+                  marginBottom: 6,
+                  lineHeight: 1.3,
+                }}
+              >
                 {ach.title}
               </h3>
 
               {/* Result */}
-              <div style={{
-                fontFamily: "var(--font-display)",
-                fontSize: 14,
-                fontWeight: 600,
-                color: ach.badgeColor,
-                marginBottom: 8,
-              }}>
+              <div
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: 14,
+                  fontWeight: 600,
+                  color: ach.badgeColor,
+                  marginBottom: 8,
+                }}
+              >
                 {ach.result}
               </div>
 
               {/* Organizer */}
-              <div style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: 11,
-                color: "var(--text-muted)",
-                marginBottom: 12,
-              }}>
+              <div
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 11,
+                  color: "var(--text-secondary)",
+                  marginBottom: 14,
+                }}
+              >
                 {ach.organizer} · {ach.date}
               </div>
 
               {/* Description */}
-              <p style={{
-                fontSize: 13,
-                color: "var(--text-muted)",
-                lineHeight: 1.65,
-              }}>
+              <p
+                style={{
+                  fontSize: 13,
+                  color: "var(--text-secondary)",
+                  lineHeight: 1.65,
+                }}
+              >
                 {ach.desc}
               </p>
             </motion.div>

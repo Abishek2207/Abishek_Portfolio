@@ -7,8 +7,8 @@ import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 import Timeline from "@/components/Timeline";
 import Achievements from "@/components/Achievements";
-import EventCarousel from "@/components/EventCarousel";
 import Certificates from "@/components/Certificates";
+import EventCarousel from "@/components/EventCarousel";
 import Contact from "@/components/Contact";
 import CustomCursor from "@/components/CustomCursor";
 import { FloatingDock } from "@/components/ReactBits/FloatingDock";
@@ -119,8 +119,8 @@ export default function Portfolio() {
         <Skills />
         <Timeline />
         <Achievements />
-        <EventCarousel />
         <Certificates />
+        <EventCarousel />
         <Contact />
       </main>
 
